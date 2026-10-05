@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="ru" data-bs-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bootstrap 5 — UI Catalog</title>
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+  rel="stylesheet">
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+  rel="stylesheet">
+<style>
+  body { padding-top: 56px; }
+  .sidebar {
+    position: sticky; top: 56px; height: calc(100vh - 56px);
+    overflow-y: auto;
+  }
+  .demo-box {
+    background: var(--bs-tertiary-bg);
+    border: 1px dashed var(--bs-border-color);
+    border-radius: .5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  section { scroll-margin-top: 70px; }
+  .demo-label {
+    font-size: .75rem; text-transform: uppercase;
+    letter-spacing: .05em; color: var(--bs-secondary-color);
+    margin-bottom: .5rem;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top border-bottom">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold" href="#">UI Catalog</a>
+    <button class="navbar-toggler" type="button"
+      data-bs-toggle="collapse" data-bs-target="#navMain">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMain">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#layout">Layout</a></li>
+        <li class="nav-item"><a class="nav-link" href="#content">Content</a></li>
+        <li class="nav-item"><a class="nav-link" href="#forms">Forms</a></li>
+        <li class="nav-item"><a class="nav-link" href="#components">Components</a></li>
+        <li class="nav-item"><a class="nav-link" href="#helpers">Helpers</a></li>
+        <li class="nav-item"><a class="nav-link" href="#utilities">Utilities</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Тема</a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" onclick="setTheme('light')">Light</a></li>
+            <li><a class="dropdown-item" onclick="setTheme('dark')">Dark</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row">
+    <!-- SIDEBAR -->
+    <aside class="col-lg-2 d-none d-lg-block sidebar bg-body-tertiary border-end p-3">
+      <p class="demo-label">Разделы</p>
+      <ul class="nav flex-column small">
+        <li><a class="nav-link p-1" href="#layout">Layout</a></li>
+        <li><a class="nav-link p-1" href="#content">Content</a></li>
+        <li><a class="nav-link p-1" href="#forms">Forms</a></li>
+        <li><a class="nav-link p-1" href="#comp-accordion">Accordion</a></li>
+        <li><a class="nav-link p-1" href="#comp-alerts">Alerts</a></li>
+        <li><a class="nav-link p-1" href="#comp-badge">Badge</a></li>
+        <li><a class="nav-link p-1" href="#comp-breadcrumb">Breadcrumb</a></li>
+        <li><a class="nav-link p-1" href="#comp-buttons">Buttons</a></li>
+        <li><a class="nav-link p-1" href="#comp-card">Card</a></li>
+        <li><a class="nav-link p-1" href="#comp-carousel">Carousel</a></li>
+        <li><a class="nav-link p-1" href="#comp-dropdown">Dropdowns</a></li>
+        <li><a class="nav-link p-1" href="#comp-listgroup">List group</a></li>
+        <li><a class="nav-link p-1" href="#comp-modal">Modal</a></li>
+        <li><a class="nav-link p-1" href="#comp-nav">Navs & Tabs</a></li>
+        <li><a class="nav-link p-1" href="#comp-offcanvas">Offcanvas</a></li>
+        <li><a class="nav-link p-1" href="#comp-pagination">Pagination</a></li>
+        <li><a class="nav-link p-1" href="#comp-placeholders">Placeholders</a></li>
+        <li><a class="nav-link p-1" href="#comp-popovers">Popovers</a></li>
+        <li><a class="nav-link p-1" href="#comp-progress">Progress</a></li>
+        <li><a class="nav-link p-1" href="#comp-spinners">Spinners</a></li>
+        <li><a class="nav-link p-1" href="#comp-toasts">Toasts</a></li>
+        <li><a class="nav-link p-1" href="#comp-tooltips">Tooltips</a></li>
+        <li><a class="nav-link p-1" href="#helpers">Helpers</a></li>
+        <li><a class="nav-link p-1" href="#utilities">Utilities</a></li>
+      </ul>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="col-lg-10 p-4">
+
+      <h1 class="mb-4">Bootstrap 5 UI Catalog</h1>
+
+      <!-- ================= LAYOUT ================= -->
+      <section id="layout" class="mb-5">
+        <h2 class="border-bottom pb-2">Layout</h2>
+
+        <p class="demo-label">Container</p>
+        <div class="demo-box">
+          <div class="container bg-primary-subtle p-2 mb-1">.container</div>
+          <div class="container-fluid bg-primary-subtle p-2">.container-fluid</div>
+        </div>
+
+        <p class="demo-label">Grid 12 columns</p>
+        <div class="demo-box">
+          <div class="row g-2">
+            <div class="col-4 bg-primary-subtle p-2 text-center">col-4</div>
+            <div class="col-4 bg-primary-subtle p-2 text-center">col-4</div>
+            <div class="col-4 bg-primary-subtle p-2 text-center">col-4</div>
+          </div>
+          <div class="row g-2 mt-1">
+            <div class="col-md-8 bg-primary-subtle p-2 text-center">col-md-8</div>
+            <div class="col-md-4 bg-primary-subtle p-2 text-center">col-md-4</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= CONTENT ================= -->
+      <section id="content" class="mb-5">
+        <h2 class="border-bottom pb-2">Content</h2>
+
+        <p class="demo-label">Typography</p>
+        <div class="demo-box">
+          <h1>h1 heading</h1>
+          <h2>h2 heading</h2>
+          <h3>h3 heading</h3>
+          <p class="lead">Lead paragraph</p>
+          <p>Обычный <strong>жирный</strong>, <em>курсив</em>, <mark>маркер</mark>,
+             <small>мелкий</small>, <code>код</code>.</p>
+          <p class="text-muted">text-muted</p>
+        </div>
+
+        <p class="demo-label">Tables</p>
+        <div class="demo-box">
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr><th>#</th><th>Имя</th><th>Email</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td>Анна</td><td>anna@ex.com</td></tr>
+              <tr><td>2</td><td>Иван</td><td>ivan@ex.com</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="demo-label">Figures / Images</p>
+        <div class="demo-box">
+          <figure class="figure">
+            <img src="https://picsum.photos/200/120" class="figure-img img-fluid rounded">
+            <figcaption class="figure-caption">Подпись к изображению</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- ================= FORMS ================= -->
+      <section id="forms" class="mb-5">
+        <h2 class="border-bottom pb-2">Forms</h2>
+
+        <div class="demo-box">
+          <div class="mb-3">
+            <label class="form-label">Form control</label>
+            <input type="text" class="form-control" placeholder="Введите текст">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Select</label>
+            <select class="form-select">
+              <option>Опция 1</option>
+              <option>Опция 2</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Range</label>
+            <input type="range" class="form-range">
+          </div>
+
+          <div class="mb-3">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="c1" checked>
+              <label class="form-check-label" for="c1">Checkbox</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="r" id="r1">
+              <label class="form-check-label" for="r1">Radio</label>
+            </div>
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="s1">
+              <label class="form-check-label" for="s1">Switch</label>
+            </div>
+          </div>
+
+          <div class="input-group mb-3">
+            <span class="input-group-text">@</span>
+            <input type="text" class="form-control" placeholder="username">
+          </div>
+
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="f1" placeholder="name@ex.com">
+            <label for="f1">Floating label</label>
+          </div>
+
+          <div class="mb-3">
+            <input class="form-control is-invalid" type="text">
+            <div class="invalid-feedback">Ошибка валидации</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= COMPONENTS ================= -->
+      <section id="components" class="mb-5">
+        <h2 class="border-bottom pb-2">Components</h2>
+
+        <!-- Accordion -->
+        <h4 id="comp-accordion" class="mt-4">Accordion</h4>
+        <div class="demo-box">
+          <div class="accordion" id="acc1">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button" data-bs-toggle="collapse"
+                  data-bs-target="#acc1-1">Первый</button>
+              </h2>
+              <div id="acc1-1" class="accordion-collapse collapse show"
+                data-bs-parent="#acc1">
+                <div class="accordion-body">Контент 1</div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                  data-bs-target="#acc1-2">Второй</button>
+              </h2>
+              <div id="acc1-2" class="accordion-collapse collapse"
+                data-bs-parent="#acc1">
+                <div class="accordion-body">Контент 2</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Alerts -->
+        <h4 id="comp-alerts" class="mt-4">Alerts</h4>
+        <div class="demo-box">
+          <div class="alert alert-primary">Primary alert</div>
+          <div class="alert alert-success">Success alert</div>
+          <div class="alert alert-warning">Warning alert</div>
+          <div class="alert alert-danger">Danger alert</div>
+          <div class="alert alert-info">Info alert</div>
+        </div>
+
+        <!-- Badge -->
+        <h4 id="comp-badge" class="mt-4">Badge</h4>
+        <div class="demo-box">
+          <span class="badge text-bg-primary">Primary</span>
+          <span class="badge text-bg-secondary">Secondary</span>
+          <span class="badge text-bg-success">Success</span>
+          <span class="badge text-bg-danger">Danger</span>
+          <span class="badge rounded-pill text-bg-warning">Pill</span>
+        </div>
+
+        <!-- Breadcrumb -->
+        <h4 id="comp-breadcrumb" class="mt-4">Breadcrumb</h4>
+        <div class="demo-box">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="#">Главная</a></li>
+            <li class="breadcrumb-item"><a href="#">Каталог</a></li>
+            <li class="breadcrumb-item active">Товар</li>
+          </ol>
+        </div>
+
+        <!-- Buttons -->
+        <h4 id="comp-buttons" class="mt-4">Buttons</h4>
+        <div class="demo-box">
+          <button class="btn btn-primary">Primary</button>
+          <button class="btn btn-secondary">Secondary</button>
+          <button class="btn btn-success">Success</button>
+          <button class="btn btn-danger">Danger</button>
+          <button class="btn btn-warning">Warning</button>
+          <button class="btn btn-info">Info</button>
+          <button class="btn btn-light">Light</button>
+          <button class="btn btn-dark">Dark</button>
+          <button class="btn btn-link">Link</button>
+          <hr>
+          <button class="btn btn-outline-primary">Outline</button>
+          <button class="btn btn-primary btn-sm">Small</button>
+          <button class="btn btn-primary btn-lg">Large</button>
+          <button class="btn btn-primary" disabled>Disabled</button>
+          <hr>
+          <div class="btn-group">
+            <button class="btn btn-outline-secondary">Left</button>
+            <button class="btn btn-outline-secondary">Middle</button>
+            <button class="btn btn-outline-secondary">Right</button>
+          </div>
+        </div>
+
+        <!-- Card -->
+        <h4 id="comp-card" class="mt-4">Card</h4>
+        <div class="demo-box">
+          <div class="card" style="width: 18rem;">
+            <img src="https://picsum.photos/300/150" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">Заголовок</h5>
+              <p class="card-text">Описание карточки.</p>
+              <a href="#" class="btn btn-primary">Кнопка</a>
+            </div>
+            <div class="card-footer text-muted">Футер</div>
+          </div>
+        </div>
+
+        <!-- Carousel -->
+        <h4 id="comp-carousel" class="mt-4">Carousel</h4>
+        <div class="demo-box">
+          <div id="car1" class="carousel slide" data-bs-ride="carousel" style="max-width:500px;">
+            <div class="carousel-indicators">
+              <button data-bs-target="#car1" data-bs-slide-to="0" class="active"></button>
+              <button data-bs-target="#car1" data-bs-slide-to="1"></button>
+              <button data-bs-target="#car1" data-bs-slide-to="2"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="https://picsum.photos/id/10/500/300" class="d-block w-100">
+              </div>
+              <div class="carousel-item">
+                <img src="https://picsum.photos/id/20/500/300" class="d-block w-100">
+              </div>
+              <div class="carousel-item">
+                <img src="https://picsum.photos/id/30/500/300" class="d-block w-100">
+              </div>
+            </div>
+            <button class="carousel-control-prev" data-bs-target="#car1" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" data-bs-target="#car1" data-bs-slide="next">
+              <span class="carousel-control-next-icon"></span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Dropdowns -->
+        <h4 id="comp-dropdown" class="mt-4">Dropdowns</h4>
+        <div class="demo-box">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle"
+              data-bs-toggle="dropdown">Dropdown</button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Действие</a></li>
+              <li><a class="dropdown-item" href="#">Другое</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Ещё</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- List group -->
+        <h4 id="comp-listgroup" class="mt-4">List group</h4>
+        <div class="demo-box">
+          <ul class="list-group" style="max-width: 400px;">
+            <li class="list-group-item active">Активный</li>
+            <li class="list-group-item">Обычный</li>
+            <li class="list-group-item d-flex justify-content-between">
+              С бейджем <span class="badge text-bg-primary">14</span>
+            </li>
+            <li class="list-group-item disabled">Отключён</li>
+          </ul>
+        </div>
+
+        <!-- Modal -->
+        <h4 id="comp-modal" class="mt-4">Modal</h4>
+        <div class="demo-box">
+          <button class="btn btn-primary" data-bs-toggle="modal"
+            data-bs-target="#mod1">Открыть modal</button>
+          <div class="modal fade" id="mod1">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Заголовок</h5>
+                  <button class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">Содержимое модалки.</div>
+                <div class="modal-footer">
+                  <button class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                  <button class="btn btn-primary">Сохранить</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navs & tabs -->
+        <h4 id="comp-nav" class="mt-4">Navs & Tabs</h4>
+        <div class="demo-box">
+          <ul class="nav nav-tabs mb-2">
+            <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab"
+              href="#t1">Tab 1</a></li>
+            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab"
+              href="#t2">Tab 2</a></li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane fade show active" id="t1">Контент 1</div>
+            <div class="tab-pane fade" id="t2">Контент 2</div>
+          </div>
+        </div>
+
+        <!-- Offcanvas -->
+        <h4 id="comp-offcanvas" class="mt-4">Offcanvas</h4>
+        <div class="demo-box">
+          <button class="btn btn-primary" data-bs-toggle="offcanvas"
+            data-bs-target="#off1">Открыть offcanvas</button>
+          <div class="offcanvas offcanvas-start" id="off1">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title">Offcanvas</h5>
+              <button class="btn-close" data-bs-dismiss="offcanvas"></button>
+            </div>
+            <div class="offcanvas-body">Содержимое.</div>
+          </div>
+        </div>
+
+        <!-- Pagination -->
+        <h4 id="comp-pagination" class="mt-4">Pagination</h4>
+        <div class="demo-box">
+          <nav><ul class="pagination mb-0">
+            <li class="page-item disabled"><a class="page-link">«</a></li>
+            <li class="page-item active"><a class="page-link">1</a></li>
+            <li class="page-item"><a class="page-link">2</a></li>
+            <li class="page-item"><a class="page-link">3</a></li>
+            <li class="page-item"><a class="page-link">»</a></li>
+          </ul></nav>
+        </div>
+
+        <!-- Placeholders -->
+        <h4 id="comp-placeholders" class="mt-4">Placeholders (skeleton)</h4>
+        <div class="demo-box">
+          <div class="card" style="max-width: 20rem;">
+            <div class="card-body">
+              <h5 class="card-title placeholder-glow">
+                <span class="placeholder col-6"></span>
+              </h5>
+              <p class="card-text placeholder-glow">
+                <span class="placeholder col-7"></span>
+                <span class="placeholder col-4"></span>
+                <span class="placeholder col-4"></span>
+                <span class="placeholder col-6"></span>
+              </p>
+              <a class="btn btn-primary disabled placeholder col-6"></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Popovers -->
+        <h4 id="comp-popovers" class="mt-4">Popovers</h4>
+        <div class="demo-box">
+          <button class="btn btn-secondary"
+            data-bs-toggle="popover" data-bs-title="Заголовок"
+            data-bs-content="Содержимое popover">Нажми меня</button>
+        </div>
+
+        <!-- Progress -->
+        <h4 id="comp-progress" class="mt-4">Progress</h4>
+        <div class="demo-box">
+          <div class="progress mb-2"><div class="progress-bar" style="width:25%">25%</div></div>
+          <div class="progress mb-2"><div class="progress-bar bg-success" style="width:50%"></div></div>
+          <div class="progress"><div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width:75%"></div></div>
+        </div>
+
+        <!-- Spinners -->
+        <h4 id="comp-spinners" class="mt-4">Spinners</h4>
+        <div class="demo-box">
+          <div class="spinner-border text-primary"></div>
+          <div class="spinner-grow text-success"></div>
+          <div class="spinner-border spinner-border-sm"></div>
+        </div>
+
+        <!-- Toasts -->
+        <h4 id="comp-toasts" class="mt-4">Toasts</h4>
+        <div class="demo-box">
+          <button class="btn btn-primary" onclick="showToast()">Показать toast</button>
+          <div class="toast-container position-fixed bottom-0 end-0 p-3">
+            <div id="toast1" class="toast">
+              <div class="toast-header">
+                <strong class="me-auto">Bootstrap</strong>
+                <small>только что</small>
+                <button class="btn-close" data-bs-dismiss="toast"></button>
+              </div>
+              <div class="toast-body">Привет! Это toast.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tooltips -->
+        <h4 id="comp-tooltips" class="mt-4">Tooltips</h4>
+        <div class="demo-box">
+          <button class="btn btn-secondary" data-bs-toggle="tooltip"
+            data-bs-title="Подсказка сверху">Наведи</button>
+          <button class="btn btn-secondary" data-bs-toggle="tooltip"
+            data-bs-placement="bottom" data-bs-title="Снизу">Ниже</button>
+        </div>
+      </section>
+
+      <!-- ================= HELPERS ================= -->
+      <section id="helpers" class="mb-5">
+        <h2 class="border-bottom pb-2">Helpers</h2>
+
+        <p class="demo-label">Stacks, Ratio, Truncation, Visually hidden</p>
+        <div class="demo-box">
+          <div class="hstack gap-3 mb-3">
+            <div class="p-2 bg-primary-subtle">A</div>
+            <div class="p-2 bg-primary-subtle">B</div>
+            <div class="p-2 bg-primary-subtle">C</div>
+          </div>
+
+          <div class="ratio ratio-16x9 mb-3" style="max-width:300px;">
+            <iframe src="about:blank"></iframe>
+          </div>
+
+          <p class="text-truncate" style="max-width: 200px;">
+            Очень длинный текст, который обрезается через text-truncate.
+          </p>
+
+          <a href="#" class="visually-hidden">Скрытая ссылка для скринридеров</a>
+        </div>
+      </section>
+
+      <!-- ================= UTILITIES ================= -->
+      <section id="utilities" class="mb-5">
+        <h2 class="border-bottom pb-2">Utilities</h2>
+
+        <p class="demo-label">Spacing, Colors, Borders, Shadow, Flex</p>
+        <div class="demo-box">
+          <div class="p-3 mb-2 bg-primary text-white">.bg-primary.text-white</div>
+          <div class="p-3 mb-2 bg-success-subtle text-success-emphasis">subtle bg</div>
+          <div class="p-3 mb-2 border rounded shadow-sm">.border.rounded.shadow-sm</div>
+          <div class="p-3 mb-2 border rounded-pill border-3 border-danger">border-danger</div>
+          <div class="d-flex justify-content-between align-items-center gap-2">
+            <div class="p-2 bg-body-tertiary">flex</div>
+            <div class="p-2 bg-body-tertiary">item</div>
+            <div class="p-2 bg-body-tertiary">group</div>
+          </div>
+          <div class="mt-3 text-center text-uppercase fw-bold fs-4 opacity-75">
+            text-uppercase
+          </div>
+        </div>
+      </section>
+
+      <footer class="text-center text-muted py-4 border-top">
+        Bootstrap 5.3 UI Catalog — шпаргалка для собственного микро-фреймворка
+      </footer>
+
+    </main>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Tooltips & Popovers — требуют ручной инициализации
+  document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    .forEach(el => new bootstrap.Tooltip(el));
+  document.querySelectorAll('[data-bs-toggle="popover"]')
+    .forEach(el => new bootstrap.Popover(el));
+
+  // Toast
+  const toastEl = document.getElementById('toast1');
+  const toast = new bootstrap.Toast(toastEl);
+  function showToast() { toast.show(); }
+
+  // Тема
+  function setTheme(t) {
+    document.documentElement.setAttribute('data-bs-theme', t);
+  }
+</script>
+</body>
+</html>
