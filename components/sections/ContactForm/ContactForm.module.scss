@@ -1,0 +1,60 @@
+// ============================================================
+// components/sections/ContactForm/ContactForm.module.scss
+// ============================================================
+
+@use "../../../styles/mixins" as bp;
+
+.grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: var(--space-12);
+  align-items: start;
+}
+
+.text {
+  padding-top: var(--space-2);
+}
+
+.title {
+  font-size: var(--text-h2);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-h2);
+}
+
+.description {
+  max-width: 420px;
+  margin-top: var(--space-3);
+
+  color: var(--color-fg-muted);
+  font-size: var(--text-base);
+  line-height: var(--leading-base);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+
+  padding: var(--space-6);
+
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+@include bp.down(md) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .description {
+    max-width: none;
+  }
+}

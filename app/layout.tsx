@@ -46,15 +46,15 @@ const footerColumns: FooterColumn[] = [
 	{
 		title: 'Компоненты',
 		links: [
-			{ label: 'Формы', href: '#forms' },
-			{ label: 'Составные', href: '#composites' },
-			{ label: 'Каркас', href: '#layout' },
+			{ label: 'Формы', href: '/#forms' },
+			{ label: 'Составные', href: '/#composites' },
+			{ label: 'Каркас', href: '/#layout' },
 		],
 	},
 	{
 		title: 'Ресурсы',
 		links: [
-			{ label: 'Документация', href: '#docs' },
+			{ label: 'Лендинг', href: '/landing' },
 			{ label: 'GitHub', href: '#github' },
 		],
 	},

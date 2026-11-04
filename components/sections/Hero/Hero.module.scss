@@ -1,0 +1,95 @@
+// ============================================================
+// components/sections/Hero/Hero.module.scss
+// ============================================================
+
+@use "../../../styles/mixins" as bp;
+
+.hero {
+  overflow: hidden;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+.solo {
+  grid-template-columns: 1fr;
+  max-width: 760px;
+  margin-inline: auto;
+}
+
+.center {
+  text-align: center;
+}
+
+.center .content {
+  align-items: center;
+}
+
+.center .eyebrow {
+  align-self: center;
+}
+
+.center .actions {
+  justify-content: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  min-width: 0;
+}
+
+.eyebrow {
+  align-self: flex-start;
+
+  padding: var(--space-1) var(--space-3);
+
+  background: var(--color-primary-subtle);
+  color: var(--color-primary);
+
+  border-radius: var(--radius-full);
+
+  font-size: var(--text-tiny);
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.04em;
+  line-height: var(--leading-small);
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: var(--text-h1);
+  font-weight: var(--weight-extrabold);
+  letter-spacing: -0.02em;
+  line-height: var(--leading-h1);
+}
+
+.description {
+  max-width: 620px;
+
+  color: var(--color-fg-muted);
+  font-size: var(--text-lead);
+  line-height: var(--leading-lead);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+.media {
+  min-width: 0;
+}
+
+@include bp.down(md) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+}

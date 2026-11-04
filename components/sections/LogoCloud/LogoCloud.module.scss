@@ -1,0 +1,38 @@
+// ============================================================
+// components/sections/LogoCloud/LogoCloud.module.scss
+// ============================================================
+
+.title {
+  margin-bottom: var(--space-6);
+
+  color: var(--color-fg-subtle);
+  font-size: var(--text-small);
+  text-align: center;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+}
+
+.logo {
+  color: var(--color-fg-subtle);
+
+  font-size: var(--text-h6);
+  font-weight: var(--weight-bold);
+  letter-spacing: -0.02em;
+
+  opacity: 0.8;
+
+  transition:
+    color var(--duration-fast) var(--ease-out),
+    opacity var(--duration-fast) var(--ease-out);
+}
+
+.logo:hover {
+  color: var(--color-fg);
+  opacity: 1;
+}

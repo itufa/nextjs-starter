@@ -10,7 +10,6 @@
 //   4. Составные
 //   5. Каркас
 //   6. Иконки
-//   7. Сетка
 // ============================================================
 
 import {
@@ -744,25 +743,6 @@ export default function HomePage() {
 							<circle cx='11' cy='11' r='8' />
 							<path d='m21 21-4.3-4.3' />
 						</Icon>
-					</div>
-				</div>
-			</section>
-
-			{/* 7. Сетка */}
-			<section id='grid' className='section section-sm border-top'>
-				<div className='container'>
-					<h2>Сетка</h2>
-
-					<div className='grid mt-6'>
-						<div className='col-12 col-md-6 col-lg-4'>
-							col-12 col-md-6 col-lg-4
-						</div>
-						<div className='col-12 col-md-6 col-lg-4'>
-							col-12 col-md-6 col-lg-4
-						</div>
-						<div className='col-12 col-md-12 col-lg-4'>
-							col-12 col-md-12 col-lg-4
-						</div>
 					</div>
 				</div>
 			</section>

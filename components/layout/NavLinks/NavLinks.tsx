@@ -34,6 +34,17 @@ type NavLinksProps = {
 	className?: string
 }
 
+function isActiveLink(href: string, pathname: string, hash: string) {
+	const [path, linkHash] = href.split('#')
+
+	if (linkHash) {
+		const samePath = path === '' || path === pathname
+		return samePath && hash === `#${linkHash}`
+	}
+
+	return href === pathname
+}
+
 export function NavLinks({
 	links,
 	orientation = 'horizontal',
@@ -57,13 +68,14 @@ export function NavLinks({
 		}
 	}, [pathname])
 
-	const current = activeHref ?? (hash || pathname)
+	const currentHash = hash
 
 	return (
 		<ul className={cn(styles.list, styles[orientation], className)}>
 			{links.map(link => {
-				const active = link.href === current
-
+				const active = activeHref
+					? link.href === activeHref
+					: isActiveLink(link.href, pathname, currentHash)
 				return (
 					<li key={link.href}>
 						<Link
@@ -71,8 +83,10 @@ export function NavLinks({
 							aria-current={active ? 'page' : undefined}
 							className={cn(styles.link, active && styles.active)}
 							onClick={() => {
-								if (link.href.startsWith('#')) {
-									setHash(link.href)
+								const linkHash = link.href.split('#')[1]
+
+								if (linkHash) {
+									setHash(`#${linkHash}`)
 								}
 
 								onNavigate?.()

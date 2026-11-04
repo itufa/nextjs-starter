@@ -1,0 +1,119 @@
+// ============================================================
+// components/sections/FeatureSplit/FeatureSplit.module.scss
+// ============================================================
+
+@use "../../../styles/mixins" as bp;
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+.reverse .text {
+  order: 2;
+}
+
+.reverse .media {
+  order: 1;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  min-width: 0;
+}
+
+.eyebrow {
+  color: var(--color-primary);
+  font-size: var(--text-tiny);
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: var(--text-h2);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-h2);
+}
+
+.description {
+  color: var(--color-fg-muted);
+  font-size: var(--text-base);
+  line-height: var(--leading-base);
+}
+
+.bullets {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.bullet {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+
+  color: var(--color-fg);
+  font-size: var(--text-small);
+  line-height: var(--leading-base);
+}
+
+.check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+
+  background: var(--color-primary-subtle);
+  color: var(--color-primary);
+
+  border-radius: var(--radius-full);
+
+  font-size: var(--text-tiny);
+  font-weight: var(--weight-bold);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+.media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 360px;
+  overflow: hidden;
+
+  background: var(--color-bg-muted);
+  border-radius: var(--radius-xl);
+}
+
+@include bp.down(md) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .reverse .text,
+  .reverse .media {
+    order: 0;
+  }
+
+  .media {
+    min-height: 260px;
+  }
+}
