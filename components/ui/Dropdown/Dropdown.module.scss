@@ -1,0 +1,110 @@
+// ============================================================
+// components/ui/Dropdown/Dropdown.module.scss
+// ============================================================
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+
+  padding: var(--space-2) var(--space-4);
+
+  background: var(--color-bg);
+  color: var(--color-fg);
+
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+
+  font-size: var(--text-small);
+  font-weight: var(--weight-medium);
+  line-height: 1.5;
+
+  cursor: pointer;
+
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out);
+}
+
+.trigger:hover {
+  background: var(--color-bg-muted);
+}
+
+.trigger:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.chevron {
+  width: 6px;
+  height: 6px;
+
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+
+  transform: translateY(-2px) rotate(45deg);
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% + var(--space-1));
+  z-index: var(--z-dropdown);
+
+  min-width: 200px;
+  padding: var(--space-1);
+
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+}
+
+.start {
+  left: 0;
+}
+
+.end {
+  right: 0;
+}
+
+.item {
+  display: block;
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+
+  background: transparent;
+  color: var(--color-fg);
+
+  border: 0;
+  border-radius: var(--radius-xs);
+
+  font-size: var(--text-small);
+  line-height: var(--leading-small);
+  text-align: left;
+  text-decoration: none;
+
+  cursor: pointer;
+}
+
+.item:hover {
+  background: var(--color-bg-muted);
+}
+
+.item:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: -2px;
+}
+
+.disabled {
+  color: var(--color-fg-subtle);
+  cursor: not-allowed;
+}
+
+.disabled:hover {
+  background: transparent;
+}

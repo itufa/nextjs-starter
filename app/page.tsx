@@ -7,8 +7,9 @@
 //   1. Действия
 //   2. Формы
 //   3. Данные и обратная связь
-//   4. Иконки
-//   5. Сетка
+//   4. Составные
+//   5. Иконки
+//   6. Сетка
 // ============================================================
 
 import {
@@ -28,10 +29,62 @@ import {
 	Skeleton,
 	Progress,
 	Icon,
+	Card,
+	Alert,
+	Accordion,
+	Tabs,
+	Dropdown,
+	Tooltip,
+	Popover,
+	Breadcrumbs,
+	Pagination,
 } from '@/components/ui'
+import { CompositeDemos } from '@/components/demo/CompositeDemos'
 
 const avatarSrc =
 	"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Crect width='80' height='80' fill='%235d21ce'/%3E%3Ccircle cx='40' cy='30' r='13' fill='%23fff'/%3E%3Cpath d='M16 70c0-13 11-24 24-24s24 11 24 24' fill='%23fff'/%3E%3C/svg%3E"
+
+const accordionItems = [
+	{
+		id: 'delivery',
+		title: 'Доставка',
+		content: <p>Доставляем по всей России за 2–5 дней.</p>,
+	},
+	{
+		id: 'payment',
+		title: 'Оплата',
+		content: <p>Картой, переводом или при получении.</p>,
+	},
+	{
+		id: 'return',
+		title: 'Возврат',
+		content: <p>14 дней на возврат без объяснения причин.</p>,
+	},
+]
+
+const tabItems = [
+	{
+		id: 'overview',
+		label: 'Обзор',
+		content: <p>Общее описание продукта и его возможностей.</p>,
+	},
+	{
+		id: 'specs',
+		label: 'Характеристики',
+		content: <p>Размеры, материалы, комплектация.</p>,
+	},
+	{
+		id: 'reviews',
+		label: 'Отзывы',
+		content: <p>Средняя оценка — 4.8 из 5.</p>,
+	},
+]
+
+const dropdownItems = [
+	{ label: 'Профиль' },
+	{ label: 'Настройки' },
+	{ label: 'Выйти', disabled: true },
+]
 
 function Demo({
 	title,
@@ -475,7 +528,113 @@ export default function HomePage() {
 				</div>
 			</section>
 
-			{/* 4. Иконки */}
+			{/* 4. Составные */}
+			<section className='section section-sm border-top'>
+				<div className='container'>
+					<h2>Составные</h2>
+
+					<div className='grid mt-8'>
+						<div className='col-6 col-md-12'>
+							<h3>Card</h3>
+							<div className='mt-4'>
+								<Card
+									title='Заголовок карточки'
+									description='Короткое описание карточки'
+									footer={<Button variant='outline'>Действие</Button>}
+								>
+									<p>
+										Карточка — контейнер для контента с шапкой, телом и
+										подвалом.
+									</p>
+								</Card>
+							</div>
+						</div>
+
+						<div className='col-6 col-md-12'>
+							<h3>Alert</h3>
+							<div className='flex flex-col gap-4 mt-4'>
+								<Alert variant='info' title='Информация'>
+									Обновление выйдет в ближайшее время.
+								</Alert>
+								<Alert variant='success' title='Готово'>
+									Изменения сохранены.
+								</Alert>
+								<Alert variant='warning' title='Обратите внимание'>
+									Проверьте заполнение полей.
+								</Alert>
+								<Alert variant='danger' title='Ошибка'>
+									Не удалось сохранить данные.
+								</Alert>
+							</div>
+						</div>
+					</div>
+
+					<div className='grid mt-8'>
+						<div className='col-6 col-md-12'>
+							<h3>Accordion</h3>
+							<div className='mt-4'>
+								<Accordion
+									items={accordionItems}
+									defaultOpen={['delivery']}
+								/>
+							</div>
+						</div>
+
+						<div className='col-6 col-md-12'>
+							<h3>Tabs</h3>
+							<div className='mt-4'>
+								<Tabs items={tabItems} />
+							</div>
+						</div>
+					</div>
+
+					<h3 className='mt-8'>Оверлеи</h3>
+					<div className='flex gap-4 flex-wrap items-center mt-4'>
+						<Dropdown label='Меню' items={dropdownItems} />
+
+						<Tooltip label='Подсказка при наведении'>
+							<Button variant='outline'>Tooltip</Button>
+						</Tooltip>
+
+						<Popover
+							trigger={<Button variant='outline'>Popover</Button>}
+							label='Popover'
+						>
+							<p>Всплывающее окно. Закрывается по клику вне и по Escape.</p>
+						</Popover>
+
+						<CompositeDemos />
+					</div>
+
+					<div className='grid mt-8'>
+						<div className='col-6 col-md-12'>
+							<h3>Breadcrumbs</h3>
+							<div className='mt-4'>
+								<Breadcrumbs
+									items={[
+										{ label: 'Главная', href: '/' },
+										{ label: 'Каталог', href: '#catalog' },
+										{ label: 'Компоненты' },
+									]}
+								/>
+							</div>
+						</div>
+
+						<div className='col-6 col-md-12'>
+							<h3>Pagination</h3>
+							<div className='mt-4'>
+								<Pagination
+									page={3}
+									totalPages={10}
+									hrefForPage={page => `#page-${page}`}
+								/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			{/* 5. Иконки */}
 			<section className='section section-sm border-top'>
 				<div className='container'>
 					<h2>Иконки</h2>
@@ -498,7 +657,7 @@ export default function HomePage() {
 				</div>
 			</section>
 
-			{/* 5. Сетка */}
+			{/* 6. Сетка */}
 			<section className='section section-sm border-top'>
 				<div className='container'>
 					<h2>Сетка</h2>

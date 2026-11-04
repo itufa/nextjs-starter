@@ -1,0 +1,68 @@
+// ============================================================
+// components/ui/Alert/Alert.module.scss
+// ============================================================
+
+.alert {
+  --alert-accent: var(--color-info);
+  --alert-bg: var(--color-info-subtle);
+
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+
+  padding: var(--space-3) var(--space-4);
+
+  background: var(--alert-bg);
+  border-left: 3px solid var(--alert-accent);
+  border-radius: var(--radius-sm);
+}
+
+.icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  color: var(--alert-accent);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-width: 0;
+}
+
+.title {
+  color: var(--color-fg);
+  font-size: var(--text-small);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-small);
+}
+
+.message {
+  color: var(--color-fg);
+  font-size: var(--text-small);
+  line-height: var(--leading-small);
+}
+
+// ------------------------------------------------------------
+// Варианты
+// ------------------------------------------------------------
+
+.info {
+  --alert-accent: var(--color-info);
+  --alert-bg: var(--color-info-subtle);
+}
+
+.success {
+  --alert-accent: var(--color-success);
+  --alert-bg: var(--color-success-subtle);
+}
+
+.warning {
+  --alert-accent: var(--color-warning);
+  --alert-bg: var(--color-warning-subtle);
+}
+
+.danger {
+  --alert-accent: var(--color-danger);
+  --alert-bg: var(--color-danger-subtle);
+}

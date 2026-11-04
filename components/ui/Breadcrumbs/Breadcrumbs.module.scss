@@ -1,0 +1,56 @@
+// ============================================================
+// components/ui/Breadcrumbs/Breadcrumbs.module.scss
+// ============================================================
+
+.nav {
+  min-width: 0;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.link {
+  color: var(--color-fg-muted);
+  font-size: var(--text-small);
+  text-decoration: none;
+
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.link:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.link:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-xs);
+}
+
+.current {
+  color: var(--color-fg);
+  font-size: var(--text-small);
+  font-weight: var(--weight-medium);
+}
+
+.separator {
+  color: var(--color-fg-subtle);
+  font-size: var(--text-small);
+  user-select: none;
+}
