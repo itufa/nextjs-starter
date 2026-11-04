@@ -33,6 +33,7 @@ type ToastProps = {
 	variant?: ToastVariant
 	duration?: number
 	action?: React.ReactNode
+	inline?: boolean
 	className?: string
 }
 
@@ -44,6 +45,7 @@ export function Toast({
 	variant = 'info',
 	duration = 5000,
 	action,
+	inline = false,
 	className,
 }: ToastProps) {
 	const onCloseRef = useRef(onClose)
@@ -72,7 +74,12 @@ export function Toast({
 		<div
 			role={variant === 'danger' ? 'alert' : 'status'}
 			aria-atomic='true'
-			className={cn(styles.toast, styles[variant], className)}
+			className={cn(
+				styles.toast,
+				inline && styles.inline,
+				styles[variant],
+				className,
+			)}
 		>
 			<span className={styles.accent} aria-hidden='true' />
 

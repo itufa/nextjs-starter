@@ -12,7 +12,8 @@
 // ============================================================
 
 import { cn } from '@/lib/cn'
-import { NavLinks, type NavLink } from '../NavLinks'
+import type { NavLink } from '@/types'
+import { NavLinks } from '../NavLinks'
 import styles from './Sidebar.module.scss'
 
 type SidebarProps = {

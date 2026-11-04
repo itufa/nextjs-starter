@@ -17,6 +17,7 @@ import {
 	Input,
 	Label,
 	FieldError,
+	Field,
 	Textarea,
 	Select,
 	Checkbox,
@@ -212,6 +213,29 @@ export default function HomePage() {
 								<Input size='sm' placeholder='Small' />
 								<Input size='md' placeholder='Medium' />
 								<Input size='lg' placeholder='Large' />
+							</div>
+
+							<h4 className='mt-6'>Field</h4>
+							<div className='flex flex-col gap-4 mt-4'>
+								<Field
+									id='field-name'
+									label='Имя'
+									hint='Подсказка под полем'
+								>
+									<Input placeholder='Введите имя' />
+								</Field>
+
+								<Field
+									id='field-email'
+									label='Email'
+									error='Введите корректный email'
+									required
+								>
+									<Input
+										type='email'
+										defaultValue='bad-email'
+									/>
+								</Field>
 							</div>
 						</div>
 

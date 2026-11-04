@@ -16,6 +16,7 @@
 //   />
 // ============================================================
 
+import { Check } from '@/components/icons'
 import { cn } from '@/lib/cn'
 import styles from './FeatureSplit.module.scss'
 
@@ -56,7 +57,7 @@ export function FeatureSplit({
 								{bullets.map((bullet, index) => (
 									<li key={index} className={styles.bullet}>
 										<span className={styles.check} aria-hidden='true'>
-											✓
+											<Check size='sm' />
 										</span>
 										<span>{bullet}</span>
 									</li>

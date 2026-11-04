@@ -25,6 +25,11 @@
   animation: toast-in var(--duration-base) var(--ease-out);
 }
 
+.inline {
+  position: static;
+  width: 100%;
+}
+
 .accent {
   flex-shrink: 0;
   align-self: stretch;

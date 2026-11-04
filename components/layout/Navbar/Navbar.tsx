@@ -26,7 +26,8 @@ import { useState } from 'react'
 import { cn } from '@/lib/cn'
 import { Hamburger } from '../Hamburger'
 import { MobileMenu } from '../MobileMenu'
-import { NavLinks, type NavLink } from '../NavLinks'
+import { NavLinks } from '../NavLinks'
+import type { NavLink } from '@/types'
 import styles from './Navbar.module.scss'
 
 type NavbarProps = {

@@ -1,18 +1,28 @@
 'use client'
 
 import { useState } from 'react'
-import { Button, Drawer, Modal, Toast } from '@/components/ui'
+import { Button, Drawer, Modal, useToast } from '@/components/ui'
 
 export function CompositeDemos() {
 	const [modalOpen, setModalOpen] = useState(false)
 	const [drawerOpen, setDrawerOpen] = useState(false)
-	const [toastOpen, setToastOpen] = useState(false)
+	const { toast } = useToast()
 
 	return (
 		<>
 			<Button onClick={() => setModalOpen(true)}>Modal</Button>
 			<Button onClick={() => setDrawerOpen(true)}>Drawer</Button>
-			<Button onClick={() => setToastOpen(true)}>Toast</Button>
+			<Button
+				onClick={() =>
+					toast({
+						title: 'Готово',
+						message: 'Изменения сохранены.',
+						variant: 'success',
+					})
+				}
+			>
+				Toast
+			</Button>
 
 			<Modal
 				open={modalOpen}
@@ -38,14 +48,6 @@ export function CompositeDemos() {
 			>
 				<p>Выдвижная панель справа. Закрывается по Escape и клику по фону.</p>
 			</Drawer>
-
-			<Toast
-				open={toastOpen}
-				onClose={() => setToastOpen(false)}
-				title='Готово'
-				message='Изменения сохранены.'
-				variant='success'
-			/>
 		</>
 	)
 }

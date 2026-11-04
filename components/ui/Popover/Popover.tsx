@@ -16,8 +16,9 @@
 
 'use client'
 
-import { cloneElement, isValidElement, useEffect, useRef, useState } from 'react'
+import { cloneElement, isValidElement, useEffect, useRef } from 'react'
 import type { MouseEvent, ReactElement, ReactNode } from 'react'
+import { useClickOutside, useDisclosure } from '@/lib/hooks'
 import { cn } from '@/lib/cn'
 import styles from './Popover.module.scss'
 
@@ -42,41 +43,33 @@ export function Popover({
 	label,
 	className,
 }: PopoverProps) {
-	const [open, setOpen] = useState(false)
+	const { open, onClose, onToggle } = useDisclosure()
 	const rootRef = useRef<HTMLDivElement>(null)
+
+	useClickOutside(rootRef, onClose, open)
 
 	useEffect(() => {
 		if (!open) {
 			return
 		}
 
-		function onPointerDown(event: PointerEvent) {
-			if (!rootRef.current?.contains(event.target as Node)) {
-				setOpen(false)
-			}
-		}
-
 		function onKeyDown(event: KeyboardEvent) {
 			if (event.key === 'Escape') {
-				setOpen(false)
+				onClose()
 			}
 		}
 
-		document.addEventListener('pointerdown', onPointerDown)
 		document.addEventListener('keydown', onKeyDown)
 
-		return () => {
-			document.removeEventListener('pointerdown', onPointerDown)
-			document.removeEventListener('keydown', onKeyDown)
-		}
-	}, [open])
+		return () => document.removeEventListener('keydown', onKeyDown)
+	}, [open, onClose])
 
 	const triggerNode = isValidElement(trigger) ? (
 		cloneElement(trigger as ReactElement<TriggerProps>, {
 			onClick: (event: MouseEvent<HTMLElement>) => {
 				const original = (trigger.props as TriggerProps).onClick
 				original?.(event)
-				setOpen(value => !value)
+				onToggle()
 			},
 			'aria-expanded': open,
 			'aria-haspopup': 'dialog',
@@ -87,7 +80,7 @@ export function Popover({
 			className={styles.fallback}
 			aria-expanded={open}
 			aria-haspopup='dialog'
-			onClick={() => setOpen(value => !value)}
+			onClick={onToggle}
 		>
 			{trigger}
 		</button>

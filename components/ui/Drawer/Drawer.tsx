@@ -16,6 +16,7 @@
 'use client'
 
 import { useEffect, useId, useRef } from 'react'
+import { useLockScroll } from '@/lib/hooks'
 import { cn } from '@/lib/cn'
 import styles from './Drawer.module.scss'
 
@@ -59,18 +60,7 @@ export function Drawer({
 		}
 	}, [open])
 
-	useEffect(() => {
-		if (!open) {
-			return
-		}
-
-		const previousOverflow = document.body.style.overflow
-		document.body.style.overflow = 'hidden'
-
-		return () => {
-			document.body.style.overflow = previousOverflow
-		}
-	}, [open])
+	useLockScroll(open)
 
 	return (
 		<dialog

@@ -1,11 +1,12 @@
 // ============================================================
-// app/landing/page.tsx
+// app/(marketing)/landing/page.tsx
 // ------------------------------------------------------------
 // Пример лендинга, собранного из секций.
 // ============================================================
 
-import type { Metadata } from 'next'
+import { submitContact, subscribeNewsletter } from '@/app/actions/contact'
 import { Badge, Button, Card, Icon, Progress } from '@/components/ui'
+import { buildMetadata } from '@/lib/seo'
 import {
 	Hero,
 	LogoCloud,
@@ -24,10 +25,11 @@ import {
 } from '@/components/sections'
 import styles from './page.module.scss'
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
 	title: 'Лендинг',
 	description: 'Пример лендинга, собранного из секций Next.js Starter',
-}
+	path: '/landing',
+})
 
 const features = [
 	{
@@ -399,12 +401,14 @@ export default function LandingPage() {
 			<ContactForm
 				title='Свяжитесь с нами'
 				description='Расскажите о проекте — поможем со стартом и ответим на вопросы.'
+				onSubmit={submitContact}
 				className='bg-muted'
 			/>
 
 			<Newsletter
 				title='Новости раз в месяц'
 				description='Новые секции, компоненты и разборы. Без спама.'
+				onSubmit={subscribeNewsletter}
 			/>
 
 			<CTA

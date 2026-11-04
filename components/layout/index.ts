@@ -6,7 +6,7 @@
 
 export { Navbar } from './Navbar'
 export { NavLinks } from './NavLinks'
-export type { NavLink } from './NavLinks'
+export type { NavLink } from '@/types'
 export { Hamburger } from './Hamburger'
 export { MobileMenu } from './MobileMenu'
 export { Footer } from './Footer'

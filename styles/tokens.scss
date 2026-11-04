@@ -18,6 +18,16 @@
 
 @use "sass:map";
 
+// Возвращает $value, если оно задано, иначе — $fallback.
+// Замена устаревшей функции if().
+@function pick($value, $fallback) {
+  @if $value {
+    @return $value;
+  }
+
+  @return $fallback;
+}
+
 // ------------------------------------------------------------
 // 1. BREAKPOINTS
 // ------------------------------------------------------------
@@ -323,19 +333,19 @@ $easings: (
 
         // Escape hatch: если overrides для этого bp нет — пустая карта.
         $over: map.get($type-overrides, $bp);
-        $over: if($over, $over, ());
+        $over: pick($over, ());
 
-        --text-tiny:  #{if(map.get($over, tiny),  map.get($over, tiny),  $base * 0.7)};
-        --text-small: #{if(map.get($over, small), map.get($over, small), $base * 0.8)};
-        --text-base:  #{if(map.get($over, base),  map.get($over, base),  $base)};
-        --text-lead:  #{if(map.get($over, lead),  map.get($over, lead),  $base * 1.25)};
+        --text-tiny:  #{pick(map.get($over, tiny),  $base * 0.7)};
+        --text-small: #{pick(map.get($over, small), $base * 0.8)};
+        --text-base:  #{pick(map.get($over, base),  $base)};
+        --text-lead:  #{pick(map.get($over, lead),  $base * 1.25)};
 
-        --text-h6: #{if(map.get($over, h6), map.get($over, h6), $base)};
-        --text-h5: #{if(map.get($over, h5), map.get($over, h5), $base * $ratio)};
-        --text-h4: #{if(map.get($over, h4), map.get($over, h4), $base * $ratio * $ratio)};
-        --text-h3: #{if(map.get($over, h3), map.get($over, h3), $base * $ratio * $ratio * $ratio)};
-        --text-h2: #{if(map.get($over, h2), map.get($over, h2), $base * $ratio * $ratio * $ratio * $ratio)};
-        --text-h1: #{if(map.get($over, h1), map.get($over, h1), $base * $ratio * $ratio * $ratio * $ratio * $ratio)};
+        --text-h6: #{pick(map.get($over, h6), $base)};
+        --text-h5: #{pick(map.get($over, h5), $base * $ratio)};
+        --text-h4: #{pick(map.get($over, h4), $base * $ratio * $ratio)};
+        --text-h3: #{pick(map.get($over, h3), $base * $ratio * $ratio * $ratio)};
+        --text-h2: #{pick(map.get($over, h2), $base * $ratio * $ratio * $ratio * $ratio)};
+        --text-h1: #{pick(map.get($over, h1), $base * $ratio * $ratio * $ratio * $ratio * $ratio)};
       }
     }
   }

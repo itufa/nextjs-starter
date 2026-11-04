@@ -14,7 +14,8 @@
 
 import { useId, useState } from 'react'
 import type { FormEvent } from 'react'
-import { Alert, Button, Input, Label, Textarea } from '@/components/ui'
+import { Alert, Button, Field, Input, Textarea } from '@/components/ui'
+import type { FormStatus } from '@/types'
 import { cn } from '@/lib/cn'
 import styles from './ContactForm.module.scss'
 
@@ -31,8 +32,6 @@ type ContactFormProps = {
 	className?: string
 }
 
-type Status = 'idle' | 'sending' | 'sent'
-
 export function ContactForm({
 	title = 'Свяжитесь с нами',
 	description,
@@ -40,7 +39,7 @@ export function ContactForm({
 	className,
 }: ContactFormProps) {
 	const baseId = useId()
-	const [status, setStatus] = useState<Status>('idle')
+	const [status, setStatus] = useState<FormStatus>('idle')
 
 	async function handleSubmit(event: FormEvent<HTMLFormElement>) {
 		event.preventDefault()
@@ -60,7 +59,7 @@ export function ContactForm({
 			setStatus('sent')
 			form.reset()
 		} catch {
-			setStatus('idle')
+			setStatus('error')
 		}
 	}
 
@@ -80,37 +79,25 @@ export function ContactForm({
 					</div>
 
 					<form className={styles.form} onSubmit={handleSubmit}>
-						<div className={styles.field}>
-							<Label htmlFor={`${baseId}-name`}>Имя</Label>
-							<Input
-								id={`${baseId}-name`}
-								name='name'
-								placeholder='Как к вам обращаться'
-								required
-							/>
-						</div>
+						<Field id={`${baseId}-name`} label='Имя' required>
+							<Input name='name' placeholder='Как к вам обращаться' />
+						</Field>
 
-						<div className={styles.field}>
-							<Label htmlFor={`${baseId}-email`}>Email</Label>
+						<Field id={`${baseId}-email`} label='Email' required>
 							<Input
-								id={`${baseId}-email`}
 								name='email'
 								type='email'
 								placeholder='you@example.com'
-								required
 							/>
-						</div>
+						</Field>
 
-						<div className={styles.field}>
-							<Label htmlFor={`${baseId}-message`}>Сообщение</Label>
+						<Field id={`${baseId}-message`} label='Сообщение' required>
 							<Textarea
-								id={`${baseId}-message`}
 								name='message'
 								rows={4}
 								placeholder='Чем можем помочь?'
-								required
 							/>
-						</div>
+						</Field>
 
 						<Button
 							type='submit'
@@ -123,6 +110,12 @@ export function ContactForm({
 						{status === 'sent' && (
 							<Alert variant='success' title='Готово'>
 								Сообщение отправлено. Мы свяжемся с вами.
+							</Alert>
+						)}
+
+						{status === 'error' && (
+							<Alert variant='danger' title='Ошибка'>
+								Не удалось отправить сообщение. Попробуйте ещё раз.
 							</Alert>
 						)}
 					</form>

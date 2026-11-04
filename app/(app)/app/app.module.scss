@@ -1,0 +1,35 @@
+// ============================================================
+// app/(app)/app/app.module.scss
+// ============================================================
+
+@use "../../../styles/mixins" as bp;
+
+.grid {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  align-items: start;
+  gap: var(--space-8);
+
+  padding-block: var(--section-y);
+}
+
+.sidebar {
+  position: sticky;
+  top: 88px;
+}
+
+.content {
+  min-width: 0;
+}
+
+@include bp.down(md) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .sidebar {
+    position: static;
+    width: 100%;
+  }
+}

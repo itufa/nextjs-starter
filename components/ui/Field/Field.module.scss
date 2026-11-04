@@ -1,0 +1,22 @@
+// ============================================================
+// components/ui/Field/Field.module.scss
+// ============================================================
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.required {
+  margin-left: var(--space-1);
+
+  color: var(--color-danger);
+}
+
+.hint {
+  margin-top: var(--space-2);
+
+  color: var(--color-fg-muted);
+  font-size: var(--text-small);
+  line-height: var(--leading-small);
+}

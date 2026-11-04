@@ -7,7 +7,9 @@
 import type { Metadata, Viewport } from 'next'
 import { Footer, Navbar, ThemeToggle } from '@/components/layout'
 import type { FooterColumn } from '@/components/layout'
+import { ToastProvider } from '@/components/ui'
 import { navLinks } from '@/config/nav'
+import { siteConfig } from '@/config/site'
 import { getFontClassNames } from '@/lib/fonts'
 import { themeInitScript } from '@/lib/theme'
 
@@ -15,21 +17,18 @@ import './globals.scss'
 
 export const metadata: Metadata = {
 	title: {
-		default: 'Next.js Starter',
-		template: '%s | Next.js Starter',
+		default: siteConfig.name,
+		template: `%s | ${siteConfig.name}`,
 	},
-	description: 'Микро-фреймворк для лендингов и корпоративных сайтов',
-	metadataBase: new URL('https://example.com'),
+	description: siteConfig.description,
+	metadataBase: new URL(siteConfig.url),
 	openGraph: {
 		type: 'website',
-		locale: 'ru_RU',
-		siteName: 'Next.js Starter',
+		locale: siteConfig.locale,
+		siteName: siteConfig.name,
 	},
 	twitter: {
 		card: 'summary_large_image',
-	},
-	icons: {
-		icon: '/favicon.ico',
 	},
 }
 
@@ -52,17 +51,19 @@ const footerColumns: FooterColumn[] = [
 		],
 	},
 	{
-		title: 'Ресурсы',
+		title: 'Страницы',
 		links: [
 			{ label: 'Лендинг', href: '/landing' },
-			{ label: 'GitHub', href: '#github' },
+			{ label: 'Кабинет', href: '/app' },
+			{ label: 'Настройки', href: '/app/settings' },
 		],
 	},
 	{
 		title: 'Компания',
 		links: [
-			{ label: 'О проекте', href: '#about' },
-			{ label: 'Контакты', href: '#contacts' },
+			{ label: 'Политика', href: '/privacy' },
+			{ label: 'Условия', href: '/terms' },
+			{ label: 'GitHub', href: '#github' },
 		],
 	},
 ]
@@ -84,21 +85,23 @@ export default function RootLayout({
 			</head>
 
 			<body>
-				<Navbar
-					brand='Next.js Starter'
-					links={navLinks}
-					actions={<ThemeToggle />}
-					sticky
-				/>
+				<ToastProvider>
+					<Navbar
+						brand={siteConfig.name}
+						links={navLinks}
+						actions={<ThemeToggle />}
+						sticky
+					/>
 
-				{children}
+					{children}
 
-				<Footer
-					brand='Next.js Starter'
-					description='Микро-фреймворк для лендингов и корпоративных сайтов.'
-					columns={footerColumns}
-					copyright='© 2026 Next.js Starter'
-				/>
+					<Footer
+						brand={siteConfig.name}
+						description={siteConfig.description}
+						columns={footerColumns}
+						copyright={`© 2026 ${siteConfig.name}`}
+					/>
+				</ToastProvider>
 			</body>
 		</html>
 	)

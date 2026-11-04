@@ -20,7 +20,8 @@
 
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
+import { useClickOutside, useDisclosure } from '@/lib/hooks'
 import { cn } from '@/lib/cn'
 import styles from './Dropdown.module.scss'
 
@@ -44,36 +45,28 @@ export function Dropdown({
 	align = 'start',
 	className,
 }: DropdownProps) {
-	const [open, setOpen] = useState(false)
+	const { open, onClose, onToggle } = useDisclosure()
 	const rootRef = useRef<HTMLDivElement>(null)
 	const triggerRef = useRef<HTMLButtonElement>(null)
+
+	useClickOutside(rootRef, onClose, open)
 
 	useEffect(() => {
 		if (!open) {
 			return
 		}
 
-		function onPointerDown(event: PointerEvent) {
-			if (!rootRef.current?.contains(event.target as Node)) {
-				setOpen(false)
-			}
-		}
-
 		function onKeyDown(event: KeyboardEvent) {
 			if (event.key === 'Escape') {
-				setOpen(false)
+				onClose()
 				triggerRef.current?.focus()
 			}
 		}
 
-		document.addEventListener('pointerdown', onPointerDown)
 		document.addEventListener('keydown', onKeyDown)
 
-		return () => {
-			document.removeEventListener('pointerdown', onPointerDown)
-			document.removeEventListener('keydown', onKeyDown)
-		}
-	}, [open])
+		return () => document.removeEventListener('keydown', onKeyDown)
+	}, [open, onClose])
 
 	return (
 		<div ref={rootRef} className={cn(styles.dropdown, className)}>
@@ -83,7 +76,7 @@ export function Dropdown({
 				aria-haspopup='menu'
 				aria-expanded={open}
 				className={styles.trigger}
-				onClick={() => setOpen(value => !value)}
+				onClick={onToggle}
 			>
 				{label}
 				<span className={styles.chevron} aria-hidden='true' />
@@ -117,7 +110,7 @@ export function Dropdown({
 									role='menuitem'
 									href={item.href}
 									className={itemClass}
-									onClick={() => setOpen(false)}
+									onClick={onClose}
 								>
 									{item.label}
 								</a>
@@ -132,7 +125,7 @@ export function Dropdown({
 								className={itemClass}
 								onClick={() => {
 									item.onSelect?.()
-									setOpen(false)
+									onClose()
 								}}
 							>
 								{item.label}

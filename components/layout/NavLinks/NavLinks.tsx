@@ -17,14 +17,9 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import type { NavLink } from '@/types'
 import { cn } from '@/lib/cn'
 import styles from './NavLinks.module.scss'
-
-export type NavLink = {
-	label: string
-	href: string
-	icon?: React.ReactNode
-}
 
 type NavLinksProps = {
 	links: NavLink[]

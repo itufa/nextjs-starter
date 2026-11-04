@@ -43,11 +43,6 @@
   box-shadow: var(--shadow-sm);
 }
 
-.field {
-  display: flex;
-  flex-direction: column;
-}
-
 @include bp.down(md) {
   .grid {
     grid-template-columns: 1fr;

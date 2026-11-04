@@ -13,7 +13,8 @@
 'use client'
 
 import { Drawer } from '@/components/ui'
-import { NavLinks, type NavLink } from '../NavLinks'
+import type { NavLink } from '@/types'
+import { NavLinks } from '../NavLinks'
 import styles from './MobileMenu.module.scss'
 
 type MobileMenuProps = {

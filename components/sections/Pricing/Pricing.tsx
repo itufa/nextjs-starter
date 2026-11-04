@@ -21,6 +21,7 @@
 //   />
 // ============================================================
 
+import { Check } from '@/components/icons'
 import { cn } from '@/lib/cn'
 import styles from './Pricing.module.scss'
 
@@ -89,7 +90,7 @@ export function Pricing({
 								{plan.features.map((feature, index) => (
 									<li key={index} className={styles.feature}>
 										<span className={styles.check} aria-hidden='true'>
-											✓
+											<Check size='sm' />
 										</span>
 										<span>{feature}</span>
 									</li>

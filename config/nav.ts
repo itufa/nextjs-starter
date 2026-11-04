@@ -5,7 +5,7 @@
 // Используется в Navbar (layout), футере и демо-меню.
 // ============================================================
 
-import type { NavLink } from '@/components/layout'
+import type { NavLink } from '@/types'
 
 export const navLinks: NavLink[] = [
 	{ label: 'Лендинг', href: '/landing' },
@@ -15,4 +15,8 @@ export const navLinks: NavLink[] = [
 	{ label: 'Составные', href: '/#composites' },
 	{ label: 'Каркас', href: '/#layout' },
 	{ label: 'Иконки', href: '/#icons' },
+	{ label: 'Кабинет', href: '/app' },
+	{ label: 'Настройки', href: '/app/settings' },
+	{ label: 'Политика', href: '/privacy' },
+	{ label: 'Условия', href: '/terms' },
 ]
