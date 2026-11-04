@@ -1,0 +1,66 @@
+// ============================================================
+// styles/themes/_default.scss
+// ------------------------------------------------------------
+// Дефолтная (светлая) тема портала.
+//
+// Самодостаточна: содержит все токены целиком, не наследуется
+// от других тем. Чтобы создать новую тему — скопируй этот файл
+// и замени значения.
+//
+// Применяется на :root по умолчанию (без атрибута data-theme).
+// ============================================================
+
+:root,
+[data-theme="default"] {
+  // --- BRAND ---
+  --color-primary:          #5d21ce;
+  --color-primary-hover:    #4f3aaa;
+  --color-primary-active:   #5d21ce;
+  --color-primary-subtle:   #fff1e8;
+
+  --color-secondary:        #dd59c0;
+  --color-secondary-hover:  #f591d7;
+  --color-secondary-subtle: #eaf8ff;
+
+  --color-surface-deep:       #242899;
+  --color-surface-deep-hover: #1e2285;
+
+  // --- TEXT ---
+  --color-fg:         #161616;
+  --color-fg-muted:   #6b7280;
+  --color-fg-subtle:  #9ca3af;
+  --color-fg-inverse: #ffffff;
+
+  // --- BACKGROUND ---
+  --color-bg:          #ffffff;
+  --color-bg-subtle: #ffffff;
+  --color-bg-muted:    #f3f4f6;
+  --color-bg-elevated: #ffffff;
+
+  // --- BORDERS ---
+  --color-border:        #e5e5e5;
+  --color-border-strong: #d1d5db;
+
+  // --- SEMANTIC ---
+  --color-success:        #16a34a;
+  --color-success-subtle: #dcfce7;
+  --color-warning:        #f59e0b;
+  --color-warning-subtle: #fef3c7;
+  --color-danger:         #dc2626;
+  --color-danger-subtle:  #fee2e2;
+  --color-info:           #0ea5e9;
+  --color-info-subtle:    #e0f2fe;
+
+  // --- GRAYS ---
+  --gray-50:  #fafafa;
+  --gray-100: #f5f5f5;
+  --gray-200: #e5e5e5;
+  --gray-300: #d4d4d4;
+  --gray-400: #a3a3a3;
+  --gray-500: #737373;
+  --gray-600: #525252;
+  --gray-700: #404040;
+  --gray-800: #262626;
+  --gray-900: #171717;
+  --gray-950: #0a0a0a;
+}

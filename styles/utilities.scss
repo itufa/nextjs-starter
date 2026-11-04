@@ -1,0 +1,92 @@
+// ============================================================
+// styles/utilities.scss
+// ------------------------------------------------------------
+// Минимальный набор утилит. Не монстр — только то, что реально
+// используется в 90% случаев.
+//
+// Принципы:
+//   - Одна утилита = одно CSS-свойство
+//   - Только токены (var(--*)), никаких хардкод-значений
+//   - Расширяем по мере необходимости
+// ============================================================
+
+// --- SPACING (margins) ---
+// Только mt/mb — самые частые. Если нужен ml/mr — добавляй.
+
+.mt-2  { margin-top: var(--space-2); }
+.mt-4  { margin-top: var(--space-4); }
+.mt-6  { margin-top: var(--space-6); }
+.mt-8  { margin-top: var(--space-8); }
+
+.mb-2  { margin-bottom: var(--space-2); }
+.mb-4  { margin-bottom: var(--space-4); }
+.mb-6  { margin-bottom: var(--space-6); }
+.mb-8  { margin-bottom: var(--space-8); }
+
+// --- SPACING (padding) ---
+// Только p (со всех сторон) — остальное через компоненты.
+
+.p-2 { padding: var(--space-2); }
+.p-4 { padding: var(--space-4); }
+.p-6 { padding: var(--space-6); }
+.p-8 { padding: var(--space-8); }
+
+// --- GAP ---
+.gap-2 { gap: var(--space-2); }
+.gap-4 { gap: var(--space-4); }
+.gap-6 { gap: var(--space-6); }
+.gap-8 { gap: var(--space-8); }
+
+// --- DISPLAY ---
+.block        { display: block; }
+.inline-block { display: inline-block; }
+.flex         { display: flex; }
+.inline-flex  { display: inline-flex; }
+.hidden       { display: none; }
+
+// --- FLEX HELPERS ---
+.flex-col        { flex-direction: column; }
+.flex-wrap       { flex-wrap: wrap; }
+.items-center    { align-items: center; }
+.items-start     { align-items: flex-start; }
+.justify-center  { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.ml-auto         { margin-left: auto; }
+
+// --- TEXT ---
+.text-center  { text-align: center; }
+.text-left    { text-align: left; }
+.text-right   { text-align: right; }
+.text-balance { text-wrap: balance; }
+.text-muted   { color: var(--color-fg-muted); }
+.text-subtle  { color: var(--color-fg-subtle); }
+
+// --- VISIBILITY ---
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// --- WIDTH ---
+.w-full { width: 100%; }
+.w-full-mobile {
+  width: auto;
+}
+
+@media (max-width: 420px) {
+  .w-full-mobile {
+    width: 100%;
+  }
+}
+
+// --- BACKGROUND ---
+.bg-subtle { background: var(--color-bg-subtle); }
+.bg-muted  { background: var(--color-bg-muted); }
+

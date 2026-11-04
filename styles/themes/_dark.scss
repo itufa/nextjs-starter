@@ -1,0 +1,65 @@
+// ============================================================
+// styles/themes/_dark.scss
+// ------------------------------------------------------------
+// Тёмная тема.
+//
+// Активируется: <html data-theme="dark">
+// Самодостаточна — все токены объявлены явно.
+// ============================================================
+
+[data-theme="dark"] {
+  // --- BRAND ---
+  --color-primary:          #FD661F;
+  --color-primary-hover:    #ff7d3d;
+  --color-primary-active:   #e85a18;
+  --color-primary-subtle:   #2a1508;
+
+  --color-secondary:        #80D8FF;
+  --color-secondary-hover:  #9de2ff;
+  --color-secondary-subtle: #0a2733;
+
+  --color-surface-deep:       #242899;
+  --color-surface-deep-hover: #2d32b8;
+
+  // --- TEXT ---
+  --color-fg:         #fafafa;
+  --color-fg-muted:   #a3a3a3;
+  --color-fg-subtle:  #737373;
+  --color-fg-inverse: #161616;
+
+  // --- BACKGROUND ---
+  --color-bg:          #0a0a0a;
+  --color-bg-subtle:   #171717;
+  --color-bg-muted:    #262626;
+  --color-bg-elevated: #171717;
+
+  // --- BORDERS ---
+  --color-border:        #262626;
+  --color-border-strong: #404040;
+
+  // --- SEMANTIC ---
+  --color-success:        #22c55e;
+  --color-success-subtle: #052e16;
+  --color-warning:        #fbbf24;
+  --color-warning-subtle: #451a03;
+  --color-danger:         #ef4444;
+  --color-danger-subtle:  #450a0a;
+  --color-info:           #38bdf8;
+  --color-info-subtle:    #082f49;
+
+  // --- GRAYS ---
+  // В тёмной теме шкала инвертируется: 50 — почти чёрный, 950 — почти белый.
+  // Это позволяет использовать --gray-50 как «самый тёмный фон»
+  // и --gray-950 как «самый светлый текст» — семантика остаётся.
+  --gray-50:  #0a0a0a;
+  --gray-100: #171717;
+  --gray-200: #262626;
+  --gray-300: #404040;
+  --gray-400: #525252;
+  --gray-500: #737373;
+  --gray-600: #a3a3a3;
+  --gray-700: #d4d4d4;
+  --gray-800: #e5e5e5;
+  --gray-900: #f5f5f5;
+  --gray-950: #fafafa;
+}

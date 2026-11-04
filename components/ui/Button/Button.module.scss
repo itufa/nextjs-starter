@@ -1,0 +1,140 @@
+// ============================================================
+// components/ui/Button/Button.module.scss
+// ============================================================
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-weight: var(--weight-medium);
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out),
+    opacity var(--duration-fast) var(--ease-out);
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+// ------------------------------------------------------------
+// Размеры
+// ------------------------------------------------------------
+
+.sm {
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-small);
+}
+
+.md {
+  padding: var(--space-3) var(--space-5);
+  font-size: var(--text-base);
+}
+
+.lg {
+  padding: var(--space-4) var(--space-12);
+  font-size: var(--text-lead);
+}
+
+// ------------------------------------------------------------
+// Варианты
+// ------------------------------------------------------------
+
+.primary {
+  background: var(--color-primary);
+  color: var(--color-fg-inverse);
+}
+
+.primary:hover:not(:disabled) {
+  background: var(--color-primary-hover);
+}
+
+.primary:active:not(:disabled) {
+  background: var(--color-primary-active);
+}
+
+.secondary {
+  background: var(--color-secondary);
+  color: var(--color-fg);
+}
+
+.secondary:hover:not(:disabled) {
+  background: var(--color-secondary-hover);
+}
+
+.secondary:active:not(:disabled) {
+  background: var(--color-secondary-hover);
+}
+
+.ghost {
+  background: transparent;
+  color: var(--color-fg);
+}
+
+.ghost:hover:not(:disabled) {
+  background: var(--color-bg-muted);
+}
+
+.ghost:active:not(:disabled) {
+  background: var(--color-bg-subtle);
+}
+
+.outline {
+  background: transparent;
+  color: var(--color-fg);
+  border-color: var(--color-border-strong);
+}
+
+.outline:hover:not(:disabled) {
+  background: var(--color-bg-muted);
+  border-color: var(--color-fg-muted);
+}
+
+.outline:active:not(:disabled) {
+  background: var(--color-bg-subtle);
+}
+
+// ------------------------------------------------------------
+// Модификаторы
+// ------------------------------------------------------------
+
+.fullWidth {
+  width: 100%;
+}
+
+// ------------------------------------------------------------
+// Иконки
+// ------------------------------------------------------------
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.icon > svg {
+  width: 1em;
+  height: 1em;
+}
+
+.label {
+  display: inline-block;
+}

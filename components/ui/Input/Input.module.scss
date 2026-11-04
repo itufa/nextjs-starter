@@ -1,0 +1,166 @@
+// ============================================================
+// components/ui/Input/Input.module.scss
+// ============================================================
+
+.input {
+  display: block;
+  width: 100%;
+
+  background: var(--color-bg);
+  color: var(--color-fg);
+
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  line-height: 1.5;
+
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out);
+}
+
+.input::placeholder {
+  color: var(--color-fg-subtle);
+}
+
+.input:hover:not(:disabled):not(:focus) {
+  border-color: var(--color-fg-muted);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-subtle);
+}
+
+.input:disabled {
+  background: var(--color-bg-muted);
+  color: var(--color-fg-muted);
+  cursor: not-allowed;
+}
+
+.input:read-only {
+  background: var(--color-bg-subtle);
+}
+
+.input.error {
+  border-color: var(--color-danger);
+}
+
+.input.error:focus {
+  border-color: var(--color-danger);
+  box-shadow: 0 0 0 3px var(--color-danger-subtle);
+}
+
+// ------------------------------------------------------------
+// Размеры
+// ------------------------------------------------------------
+
+.sm {
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-small);
+}
+
+.md {
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--text-base);
+}
+
+.lg {
+  padding: var(--space-4) var(--space-5);
+  font-size: var(--text-lead);
+}
+
+// ------------------------------------------------------------
+// Wrapper с иконками
+// ------------------------------------------------------------
+
+.wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.wrapper .input {
+  /* padding корректируется под иконки — см. классы ниже */
+}
+
+// Отступы под иконки
+.withIconLeft {
+  padding-left: calc(var(--space-4) + 1em + var(--space-2));
+}
+
+.withIconRight {
+  padding-right: calc(var(--space-4) + 1em + var(--space-2));
+}
+
+// sm/lg — корректировка
+.sm.withIconLeft {
+  padding-left: calc(var(--space-3) + 1em + var(--space-1));
+}
+
+.sm.withIconRight {
+  padding-right: calc(var(--space-3) + 1em + var(--space-1));
+}
+
+.lg.withIconLeft {
+  padding-left: calc(var(--space-5) + 1em + var(--space-2));
+}
+
+.lg.withIconRight {
+  padding-right: calc(var(--space-5) + 1em + var(--space-2));
+}
+
+// ------------------------------------------------------------
+// Иконки
+// ------------------------------------------------------------
+
+.icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-fg-muted);
+  pointer-events: none;
+  line-height: 1;
+}
+
+.icon > svg {
+  width: 1em;
+  height: 1em;
+}
+
+.iconLeft {
+  left: var(--space-4);
+}
+
+.iconRight {
+  right: var(--space-4);
+}
+
+.sm .iconLeft {
+  left: var(--space-3);
+}
+
+.sm .iconRight {
+  right: var(--space-3);
+}
+
+.lg .iconLeft {
+  left: var(--space-5);
+}
+
+.lg .iconRight {
+  right: var(--space-5);
+}
+
+// ------------------------------------------------------------
+// Wrapper — состояние
+// ------------------------------------------------------------
+
+.wrapper.disabled .icon {
+  color: var(--color-fg-subtle);
+}

@@ -1,0 +1,78 @@
+// ============================================================
+// styles/mixins/_breakpoint.scss
+// ------------------------------------------------------------
+// Миксины для медиазапросов.
+//
+// Использование:
+//   @use "@/styles/mixins" as bp;
+//
+//   .hero {
+//     @include bp.down(lg) { font-size: 32px; }
+//     @include bp.up(md)   { display: grid; }
+//     @include bp.between(md, lg) { padding: 20px; }
+//   }
+//
+// Все миксины читают $breakpoints из styles/tokens.scss.
+// ============================================================
+
+@use "sass:map";
+@use "../tokens" as *;
+
+// ------------------------------------------------------------
+// down($name)
+// ------------------------------------------------------------
+// @media (max-width: <breakpoint>)
+//
+// Пример: bp.down(lg) → @media (max-width: 1200px)
+
+@mixin down($name) {
+  $size: map.get($breakpoints, $name);
+  @if $size == null {
+    @error "Unknown breakpoint: #{$name}. Available: #{map.keys($breakpoints)}";
+  }
+  @media (max-width: #{$size}) {
+    @content;
+  }
+}
+
+// ------------------------------------------------------------
+// up($name)
+// ------------------------------------------------------------
+// @media (min-width: <breakpoint + 1px>)
+//
+// Сдвиг на +1px чтобы не пересекаться с down().
+// Пример: bp.up(lg) → @media (min-width: 1201px)
+
+@mixin up($name) {
+  $size: map.get($breakpoints, $name);
+  @if $size == null {
+    @error "Unknown breakpoint: #{$name}. Available: #{map.keys($breakpoints)}";
+  }
+  @media (min-width: #{$size + 1px}) {
+    @content;
+  }
+}
+
+// ------------------------------------------------------------
+// between($from, $to)
+// ------------------------------------------------------------
+// @media (min-width: <from + 1px>) and (max-width: <to>)
+//
+// Пример: bp.between(md, lg)
+//      → @media (min-width: 991px) and (max-width: 1200px)
+
+@mixin between($from, $to) {
+  $min: map.get($breakpoints, $from);
+  $max: map.get($breakpoints, $to);
+
+  @if $min == null or $max == null {
+    @error "Unknown breakpoint in between(#{$from}, #{$to})";
+  }
+  @if $min >= $max {
+    @error "between(#{$from}, #{$to}): #{$from} must be smaller than #{$to}";
+  }
+
+  @media (min-width: #{$min + 1px}) and (max-width: #{$max}) {
+    @content;
+  }
+}

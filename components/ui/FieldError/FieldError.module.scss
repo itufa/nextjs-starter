@@ -1,0 +1,10 @@
+// ============================================================
+// components/ui/FieldError/FieldError.module.scss
+// ============================================================
+
+.error {
+  margin-top: var(--space-2);
+  font-size: var(--text-small);
+  line-height: var(--leading-small);
+  color: var(--color-danger);
+}

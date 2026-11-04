@@ -1,0 +1,78 @@
+// ============================================================
+// styles/motion.scss
+// ------------------------------------------------------------
+// Глобальные правила анимаций.
+//
+// Уважает prefers-reduced-motion: если пользователь отключил
+// анимации в системе — все transitions/animation отключаются.
+// ============================================================
+
+// --- БАЗОВЫЕ ПЕРЕХОДЫ ---
+// Применяем на интерактивные элементы через класс.
+// Не задаём transition глобально на * — это вредит производительности.
+
+.transition-colors {
+  transition:
+    color var(--duration-base) var(--ease-out),
+    background-color var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out);
+}
+
+.transition-transform {
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.transition-opacity {
+  transition: opacity var(--duration-base) var(--ease-out);
+}
+
+// --- KEYFRAMES ---
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fade-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-down {
+  from { opacity: 0; transform: translateY(-16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  50% { opacity: 0.5; }
+}
+
+// --- КЛАССЫ АНИМАЦИЙ ---
+
+.animate-fade-in  { animation: fade-in  var(--duration-base) var(--ease-out) both; }
+.animate-slide-up { animation: slide-up var(--duration-slow) var(--ease-out) both; }
+.animate-spin     { animation: spin 1s linear infinite; }
+.animate-pulse    { animation: pulse 2s var(--ease-in-out) infinite; }
+
+// --- REDUCED MOTION ---
+// Если пользователь отключил анимации в системе — глушим всё.
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

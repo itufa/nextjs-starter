@@ -1,0 +1,342 @@
+// ============================================================
+// styles/tokens.scss
+// ------------------------------------------------------------
+// Дизайн-токены, кроме цветов (цвета — в themes/_default.scss).
+// Единственный источник правды для значений.
+//
+// Структура:
+//   1. Sass-карты (источник)
+//   2. Генерация CSS custom properties через @each
+//   3. Escape hatch для точечных переопределений
+//
+// ПРАВИЛА:
+//   - Sass-карты — только для compile-time генерации.
+//   - Все значения в рантайме — через var(--*).
+//   - Никакие компоненты не должны использовать $sass-переменные
+//     напрямую, только var().
+// ============================================================
+
+@use "sass:map";
+
+// ------------------------------------------------------------
+// 1. BREAKPOINTS
+// ------------------------------------------------------------
+
+$breakpoints: (
+  xxl: 1600px,
+  xl:  1400px,
+  lg:  1200px,
+  md:   990px,
+  sm:   760px,
+  xs:   570px,
+  xxs:  420px,
+);
+
+// ------------------------------------------------------------
+// 2. CONTAINERS
+// ------------------------------------------------------------
+
+$containers: (
+  xxl: (width: 1560px, padding: 20px),
+  xl:  (width: 1360px, padding: 20px),
+  lg:  (width: 1170px, padding: 15px),
+  md:  (width:  960px, padding: 15px),
+  sm:  (width:  730px, padding: 15px),
+  xs:  (width:  550px, padding: 10px),
+  xxs: (width:  400px, padding: 10px),
+);
+
+$container-default: map.get($containers, xxl);
+
+// ------------------------------------------------------------
+// 3. GRID GAPS
+// ------------------------------------------------------------
+
+$grid-gaps: (
+  xxl: 32px,
+  xl:  30px,
+  lg:  24px,
+  md:  20px,
+  sm:  16px,
+  xs:  12px,
+  xxs: 12px,
+);
+
+// ------------------------------------------------------------
+// 4. SECTION Y
+// ------------------------------------------------------------
+
+$section-y: (
+  xxl: 120px,
+  xl:  100px,
+  lg:   80px,
+  md:   70px,
+  sm:   60px,
+  xs:   50px,
+  xxs:  40px,
+);
+
+// ------------------------------------------------------------
+// 5. SPACING
+// ------------------------------------------------------------
+
+$spaces: (
+  1:  4px,
+  2:  8px,
+  3: 12px,
+  4: 16px,
+  5: 20px,
+  6: 24px,
+  8: 32px,
+  10: 40px,
+  12: 48px,
+  16: 64px,
+  20: 80px,
+  24: 96px,
+);
+
+// ------------------------------------------------------------
+// 6. TYPE SCALE
+// ------------------------------------------------------------
+
+$type-scale: (
+  xxl: (base: 16px, ratio: 1.33),
+  xl:  (base: 16px, ratio: 1.25),
+  lg:  (base: 14px, ratio: 1.20),
+  md:  (base: 14px, ratio: 1.15),
+  sm:  (base: 14px, ratio: 1.125),
+  xs:  (base: 14px, ratio: 1.125),
+  xxs: (base: 14px, ratio: 1.125),
+);
+
+// ------------------------------------------------------------
+// 7. TYPE OVERRIDES — ESCAPE HATCH
+// ------------------------------------------------------------
+// Точечные переопределения типографической шкалы.
+//
+// Структура:
+//   $type-overrides: (
+//     <breakpoint>: (
+//       <уровень>: <размер>,
+//     ),
+//   );
+//
+// Доступные breakpoint'ы: xxl, xl, lg, md, sm, xs, xxs
+// Доступные уровни:      tiny, small, base, lead, h6, h5, h4, h3, h2, h1
+//
+// Пример:
+//   $type-overrides: (
+//     lg: (h2: 28px, h3: 24px),
+//     md: (h1: 26px),
+//   );
+//
+// ПРАВИЛА:
+//   1. Работает только на указанном breakpoint.
+//   2. Перебивает сгенерированное значение (не суммируется).
+//   3. Не больше 2-3 переопределений на breakpoint.
+//   4. Если override нужен везде — правь $type-scale.
+// ------------------------------------------------------------
+
+$type-overrides: ();
+
+// ------------------------------------------------------------
+// 8. FONT WEIGHTS
+// ------------------------------------------------------------
+
+$font-weights: (
+  light:     300,
+  normal:    400,
+  medium:    500,
+  semibold:  600,
+  bold:      700,
+  extrabold: 800,
+);
+
+// ------------------------------------------------------------
+// 9. LINE HEIGHTS
+// ------------------------------------------------------------
+
+$line-heights: (
+  tiny:  1.4,
+  small: 1.4,
+  base:  1.5,
+  lead:  1.5,
+  h6:    1.25,
+  h5:    1.25,
+  h4:    1.25,
+  h3:    1.25,
+  h2:    1.25,
+  h1:    1.25,
+);
+
+// ------------------------------------------------------------
+// 10. RADII
+// ------------------------------------------------------------
+
+$radii: (
+  none: 0,
+  xs:   4px,
+  sm:   8px,
+  md:  12px,
+  lg:  16px,
+  xl:  24px,
+  full: 9999px,
+);
+
+// ------------------------------------------------------------
+// 11. SHADOWS
+// ------------------------------------------------------------
+
+$shadows: (
+  xs: 0 1px 2px rgba(0, 0, 0, 0.05),
+  sm: 0 2px 4px rgba(0, 0, 0, 0.06),
+  md: 0 4px 12px rgba(0, 0, 0, 0.08),
+  lg: 0 8px 24px rgba(0, 0, 0, 0.10),
+  xl: 0 16px 48px rgba(0, 0, 0, 0.12),
+);
+
+// ------------------------------------------------------------
+// 12. Z-INDEX
+// ------------------------------------------------------------
+
+$z-indexes: (
+  base:     0,
+  dropdown: 1000,
+  sticky:   1020,
+  fixed:    1030,
+  modal:    1040,
+  popover:  1050,
+  tooltip:  1060,
+  toast:    1070,
+);
+
+// ------------------------------------------------------------
+// 13. MOTION
+// ------------------------------------------------------------
+
+$durations: (
+  fast:   120ms,
+  base:   200ms,
+  slow:   320ms,
+  slower: 500ms,
+);
+
+$easings: (
+  out:    cubic-bezier(0.2, 0.8, 0.2, 1),
+  in:     cubic-bezier(0.4, 0, 1, 1),
+  in-out: cubic-bezier(0.4, 0, 0.2, 1),
+  spring: cubic-bezier(0.34, 1.56, 0.64, 1),
+);
+
+// ============================================================
+// ГЕНЕРАЦИЯ CSS CUSTOM PROPERTIES
+// ============================================================
+
+:root {
+  // --- SPACING ---
+  @each $key, $value in $spaces {
+    --space-#{$key}: #{$value};
+  }
+
+  // --- RADII ---
+  @each $key, $value in $radii {
+    --radius-#{$key}: #{$value};
+  }
+
+  // --- SHADOWS ---
+  @each $key, $value in $shadows {
+    --shadow-#{$key}: #{$value};
+  }
+
+  // --- Z-INDEX ---
+  @each $key, $value in $z-indexes {
+    --z-#{$key}: #{$value};
+  }
+
+  // --- MOTION ---
+  @each $key, $value in $durations {
+    --duration-#{$key}: #{$value};
+  }
+  @each $key, $value in $easings {
+    --ease-#{$key}: #{$value};
+  }
+
+  // --- FONT WEIGHTS ---
+  @each $key, $value in $font-weights {
+    --weight-#{$key}: #{$value};
+  }
+
+  // --- CONTAINER (дефолт) ---
+  --container-width: #{map.get($container-default, width)};
+  --container-padding: #{map.get($container-default, padding)};
+
+  // --- GRID GAP (дефолт) ---
+  --grid-gap: #{map.get($grid-gaps, xxl)};
+
+  // --- SECTION Y (дефолт) ---
+  --section-y: #{map.get($section-y, xxl)};
+
+  // --- TYPE SCALE (дефолт, xxl) ---
+  $base:  map.get(map.get($type-scale, xxl), base);
+  $ratio: map.get(map.get($type-scale, xxl), ratio);
+
+  --text-tiny:  #{$base * 0.7};
+  --text-small: #{$base * 0.8};
+  --text-base:  #{$base};
+  --text-lead:  #{$base * 1.25};
+  --text-h6:    #{$base};
+  --text-h5:    #{$base * $ratio};
+  --text-h4:    #{$base * $ratio * $ratio};
+  --text-h3:    #{$base * $ratio * $ratio * $ratio};
+  --text-h2:    #{$base * $ratio * $ratio * $ratio * $ratio};
+  --text-h1:    #{$base * $ratio * $ratio * $ratio * $ratio * $ratio};
+
+  // --- LINE HEIGHTS ---
+  @each $key, $value in $line-heights {
+    --leading-#{$key}: #{$value};
+  }
+}
+
+// ============================================================
+// BREAKPOINT OVERRIDES
+// ============================================================
+
+@each $bp, $bp-size in $breakpoints {
+  @if $bp != xxl {
+    @media (max-width: #{$bp-size}) {
+      :root {
+        // Container
+        $c: map.get($containers, $bp);
+        --container-width: #{map.get($c, width)};
+        --container-padding: #{map.get($c, padding)};
+
+        // Grid gap
+        --grid-gap: #{map.get($grid-gaps, $bp)};
+
+        // Section Y
+        --section-y: #{map.get($section-y, $bp)};
+
+        // Type scale
+        $scale: map.get($type-scale, $bp);
+        $base:  map.get($scale, base);
+        $ratio: map.get($scale, ratio);
+
+        // Escape hatch: если overrides для этого bp нет — пустая карта.
+        $over: map.get($type-overrides, $bp);
+        $over: if($over, $over, ());
+
+        --text-tiny:  #{if(map.get($over, tiny),  map.get($over, tiny),  $base * 0.7)};
+        --text-small: #{if(map.get($over, small), map.get($over, small), $base * 0.8)};
+        --text-base:  #{if(map.get($over, base),  map.get($over, base),  $base)};
+        --text-lead:  #{if(map.get($over, lead),  map.get($over, lead),  $base * 1.25)};
+
+        --text-h6: #{if(map.get($over, h6), map.get($over, h6), $base)};
+        --text-h5: #{if(map.get($over, h5), map.get($over, h5), $base * $ratio)};
+        --text-h4: #{if(map.get($over, h4), map.get($over, h4), $base * $ratio * $ratio)};
+        --text-h3: #{if(map.get($over, h3), map.get($over, h3), $base * $ratio * $ratio * $ratio)};
+        --text-h2: #{if(map.get($over, h2), map.get($over, h2), $base * $ratio * $ratio * $ratio * $ratio)};
+        --text-h1: #{if(map.get($over, h1), map.get($over, h1), $base * $ratio * $ratio * $ratio * $ratio * $ratio)};
+      }
+    }
+  }
+}
