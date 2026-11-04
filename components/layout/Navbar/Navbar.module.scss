@@ -1,0 +1,73 @@
+// ============================================================
+// components/layout/Navbar/Navbar.module.scss
+// ============================================================
+
+@use "../../../styles/mixins" as bp;
+
+.navbar {
+  width: 100%;
+
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+
+  width: 100%;
+  max-width: var(--container-width);
+  margin-inline: auto;
+  padding: var(--space-3) var(--container-padding);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-shrink: 0;
+
+  color: var(--color-fg);
+
+  font-size: var(--text-h6);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-h6);
+  text-decoration: none;
+}
+
+.brand:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.desktop {
+  display: none;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-left: auto;
+}
+
+.hamburger {
+  flex-shrink: 0;
+}
+
+@include bp.up(sm) {
+  .desktop {
+    display: block;
+  }
+
+  .hamburger {
+    display: none;
+  }
+}

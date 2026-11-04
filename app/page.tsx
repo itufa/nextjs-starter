@@ -8,8 +8,9 @@
 //   2. Формы
 //   3. Данные и обратная связь
 //   4. Составные
-//   5. Иконки
-//   6. Сетка
+//   5. Каркас
+//   6. Иконки
+//   7. Сетка
 // ============================================================
 
 import {
@@ -39,7 +40,10 @@ import {
 	Breadcrumbs,
 	Pagination,
 } from '@/components/ui'
+import { Cluster, Sidebar, Stack, ThemeToggle } from '@/components/layout'
 import { CompositeDemos } from '@/components/demo/CompositeDemos'
+import { LayoutDemos } from '@/components/demo/LayoutDemos'
+import { navLinks } from '@/config/nav'
 
 const avatarSrc =
 	"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Crect width='80' height='80' fill='%235d21ce'/%3E%3Ccircle cx='40' cy='30' r='13' fill='%23fff'/%3E%3Cpath d='M16 70c0-13 11-24 24-24s24 11 24 24' fill='%23fff'/%3E%3C/svg%3E"
@@ -86,6 +90,12 @@ const dropdownItems = [
 	{ label: 'Выйти', disabled: true },
 ]
 
+const sidebarLinks = [
+	{ label: 'Обзор', href: '#overview' },
+	{ label: 'Аналитика', href: '#analytics' },
+	{ label: 'Настройки', href: '#settings' },
+]
+
 function Demo({
 	title,
 	children,
@@ -114,7 +124,7 @@ export default function HomePage() {
 			</section>
 
 			{/* 1. Действия */}
-			<section className='section section-sm border-top'>
+			<section id='actions' className='section section-sm border-top'>
 				<div className='container'>
 					<h2>Действия</h2>
 
@@ -147,7 +157,7 @@ export default function HomePage() {
 			</section>
 
 			{/* 2. Формы */}
-			<section className='section section-sm border-top'>
+			<section id='forms' className='section section-sm border-top'>
 				<div className='container'>
 					<h2>Формы</h2>
 
@@ -403,7 +413,7 @@ export default function HomePage() {
 			</section>
 
 			{/* 3. Данные и обратная связь */}
-			<section className='section section-sm border-top'>
+			<section id='data' className='section section-sm border-top'>
 				<div className='container'>
 					<h2>Данные и обратная связь</h2>
 
@@ -529,7 +539,7 @@ export default function HomePage() {
 			</section>
 
 			{/* 4. Составные */}
-			<section className='section section-sm border-top'>
+			<section id='composites' className='section section-sm border-top'>
 				<div className='container'>
 					<h2>Составные</h2>
 
@@ -634,8 +644,89 @@ export default function HomePage() {
 				</div>
 			</section>
 
-			{/* 5. Иконки */}
-			<section className='section section-sm border-top'>
+			{/* 5. Каркас */}
+			<section id='layout' className='section section-sm border-top'>
+				<div className='container'>
+					<h2>Каркас</h2>
+
+					<div className='grid mt-8'>
+						<div className='col-4 col-md-12'>
+							<h3>Stack</h3>
+							<div className='mt-4'>
+								<Stack gap='sm'>
+									<div
+										className='p-4 bg-muted'
+										style={{ borderRadius: 'var(--radius-sm)' }}
+									>
+										Первый блок
+									</div>
+									<div
+										className='p-4 bg-muted'
+										style={{ borderRadius: 'var(--radius-sm)' }}
+									>
+										Второй блок
+									</div>
+									<div
+										className='p-4 bg-muted'
+										style={{ borderRadius: 'var(--radius-sm)' }}
+									>
+										Третий блок
+									</div>
+								</Stack>
+							</div>
+						</div>
+
+						<div className='col-4 col-md-12'>
+							<h3>Cluster</h3>
+							<div className='mt-4'>
+								<Cluster gap='sm'>
+									<Badge>Новое</Badge>
+									<Badge variant='success'>Активно</Badge>
+									<Badge variant='info'>Черновик</Badge>
+									<Badge variant='warning'>На проверке</Badge>
+								</Cluster>
+							</div>
+						</div>
+
+						<div className='col-4 col-md-12'>
+							<h3>ThemeToggle</h3>
+							<div className='mt-4'>
+								<ThemeToggle />
+							</div>
+							<p className='text-muted mt-2'>
+								Переключает data-theme и сохраняет выбор в localStorage.
+							</p>
+						</div>
+					</div>
+
+					<div className='grid mt-8'>
+						<div className='col-4 col-md-12'>
+							<h3>Sidebar</h3>
+							<div className='mt-4'>
+								<Sidebar
+									title='Кабинет'
+									links={sidebarLinks}
+									footer={<span className='text-muted'>v0.1.0</span>}
+								/>
+							</div>
+						</div>
+
+						<div className='col-8 col-md-12'>
+							<h3>Hamburger + MobileMenu</h3>
+							<div className='mt-4'>
+								<LayoutDemos links={navLinks} />
+							</div>
+							<p className='text-muted mt-4'>
+								Кнопка открывает мобильное меню на Drawer: фокус-трап,
+								Escape и клик по фону работают.
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			{/* 6. Иконки */}
+			<section id='icons' className='section section-sm border-top'>
 				<div className='container'>
 					<h2>Иконки</h2>
 
@@ -657,8 +748,8 @@ export default function HomePage() {
 				</div>
 			</section>
 
-			{/* 6. Сетка */}
-			<section className='section section-sm border-top'>
+			{/* 7. Сетка */}
+			<section id='grid' className='section section-sm border-top'>
 				<div className='container'>
 					<h2>Сетка</h2>
 

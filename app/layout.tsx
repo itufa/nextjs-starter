@@ -5,7 +5,11 @@
 // ============================================================
 
 import type { Metadata, Viewport } from 'next'
+import { Footer, Navbar, ThemeToggle } from '@/components/layout'
+import type { FooterColumn } from '@/components/layout'
+import { navLinks } from '@/config/nav'
 import { getFontClassNames } from '@/lib/fonts'
+import { themeInitScript } from '@/lib/theme'
 
 import './globals.scss'
 
@@ -38,6 +42,31 @@ export const viewport: Viewport = {
 	],
 }
 
+const footerColumns: FooterColumn[] = [
+	{
+		title: 'Компоненты',
+		links: [
+			{ label: 'Формы', href: '#forms' },
+			{ label: 'Составные', href: '#composites' },
+			{ label: 'Каркас', href: '#layout' },
+		],
+	},
+	{
+		title: 'Ресурсы',
+		links: [
+			{ label: 'Документация', href: '#docs' },
+			{ label: 'GitHub', href: '#github' },
+		],
+	},
+	{
+		title: 'Компания',
+		links: [
+			{ label: 'О проекте', href: '#about' },
+			{ label: 'Контакты', href: '#contacts' },
+		],
+	},
+]
+
 export default function RootLayout({
 	children,
 }: {
@@ -50,7 +79,27 @@ export default function RootLayout({
 			className={getFontClassNames()}
 			suppressHydrationWarning
 		>
-			<body>{children}</body>
+			<head>
+				<script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+			</head>
+
+			<body>
+				<Navbar
+					brand='Next.js Starter'
+					links={navLinks}
+					actions={<ThemeToggle />}
+					sticky
+				/>
+
+				{children}
+
+				<Footer
+					brand='Next.js Starter'
+					description='Микро-фреймворк для лендингов и корпоративных сайтов.'
+					columns={footerColumns}
+					copyright='© 2026 Next.js Starter'
+				/>
+			</body>
 		</html>
 	)
 }

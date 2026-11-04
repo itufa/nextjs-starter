@@ -38,7 +38,8 @@
 // ------------------------------------------------------------
 
 .section {
-   padding-block: var(--section-y);
+  padding-block: var(--section-y);
+  scroll-margin-top: calc(var(--space-16) + var(--space-4));
 }
 
 // ------------------------------------------------------------
