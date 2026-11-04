@@ -1,0 +1,103 @@
+// ============================================================
+// components/ui/Badge/Badge.module.scss
+// ============================================================
+
+.badge {
+  --badge-bg: var(--color-bg-muted);
+  --badge-accent: var(--color-fg-muted);
+
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+
+  padding: var(--space-1) var(--space-3);
+
+  background: var(--badge-bg);
+  border-radius: var(--radius-full);
+
+  // Фолбэк для браузеров без color-mix.
+  color: var(--color-fg);
+  color: color-mix(in srgb, var(--badge-accent) 50%, var(--color-fg));
+
+  font-size: var(--text-small);
+  font-weight: var(--weight-medium);
+  line-height: 1;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+// ------------------------------------------------------------
+// Варианты
+// ------------------------------------------------------------
+
+.neutral {
+  --badge-bg: var(--color-bg-muted);
+  --badge-accent: var(--color-fg-muted);
+}
+
+.primary {
+  --badge-bg: var(--color-primary-subtle);
+  --badge-accent: var(--color-primary);
+}
+
+.secondary {
+  --badge-bg: var(--color-secondary-subtle);
+  --badge-accent: var(--color-secondary);
+}
+
+.success {
+  --badge-bg: var(--color-success-subtle);
+  --badge-accent: var(--color-success);
+}
+
+.warning {
+  --badge-bg: var(--color-warning-subtle);
+  --badge-accent: var(--color-warning);
+}
+
+.danger {
+  --badge-bg: var(--color-danger-subtle);
+  --badge-accent: var(--color-danger);
+}
+
+.info {
+  --badge-bg: var(--color-info-subtle);
+  --badge-accent: var(--color-info);
+}
+
+// ------------------------------------------------------------
+// Точка-индикатор
+// ------------------------------------------------------------
+
+.dot::before {
+  content: "";
+
+  flex-shrink: 0;
+  width: 0.45em;
+  height: 0.45em;
+
+  background: var(--badge-accent);
+  border-radius: var(--radius-full);
+}
+
+// ------------------------------------------------------------
+// Размеры
+// ------------------------------------------------------------
+
+.sm {
+  padding: 2px var(--space-2);
+
+  font-size: var(--text-tiny);
+}
+
+.md {
+  padding: var(--space-1) var(--space-3);
+
+  font-size: var(--text-small);
+}
+
+.lg {
+  padding: var(--space-1) var(--space-4);
+
+  font-size: var(--text-base);
+}

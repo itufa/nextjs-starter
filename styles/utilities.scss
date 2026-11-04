@@ -90,3 +90,11 @@
 .bg-subtle { background: var(--color-bg-subtle); }
 .bg-muted  { background: var(--color-bg-muted); }
 
+// --- BORDERS ---
+.border-top    { border-top: 1px solid var(--color-border); }
+.border-bottom { border-bottom: 1px solid var(--color-border); }
+
+// --- SECTION SIZE MODIFIERS ---
+.section-sm { padding-block: calc(var(--section-y) * 0.5); }
+.section-lg { padding-block: calc(var(--section-y) * 1.5); }
+

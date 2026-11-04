@@ -1,0 +1,195 @@
+// ============================================================
+// components/ui/Switch/Switch.module.scss
+// ============================================================
+
+.root {
+  --switch-width: 44px;
+  --switch-height: 24px;
+  --switch-thumb: 18px;
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+
+  color: var(--color-fg);
+  font-size: var(--text-base);
+  line-height: var(--leading-base);
+  cursor: pointer;
+  user-select: none;
+}
+
+// ------------------------------------------------------------
+// Нативный input — скрыт, но остаётся в DOM и доступен с клавиатуры
+// ------------------------------------------------------------
+
+.input {
+  position: absolute;
+  top: 0;
+  inset-inline-start: 0;
+  width: var(--switch-width);
+  height: var(--switch-height);
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.input:focus {
+  outline: none;
+}
+
+// ------------------------------------------------------------
+// Трек
+// ------------------------------------------------------------
+
+.track {
+  position: relative;
+  flex-shrink: 0;
+  width: var(--switch-width);
+  height: var(--switch-height);
+
+  background: var(--color-bg-muted);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-full);
+
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out);
+}
+
+// ------------------------------------------------------------
+// Бегунок
+// ------------------------------------------------------------
+
+.thumb {
+  position: absolute;
+  top: 50%;
+  left: 2px;
+  width: var(--switch-thumb);
+  height: var(--switch-thumb);
+
+  background: var(--color-bg);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-sm);
+
+  transform: translateY(-50%);
+  transition:
+    transform var(--duration-base) var(--ease-out),
+    background-color var(--duration-fast) var(--ease-out);
+}
+
+.label {
+  font-size: inherit;
+  line-height: inherit;
+}
+
+// ------------------------------------------------------------
+// Hover
+// ------------------------------------------------------------
+
+.root:not(.disabled):hover .track {
+  border-color: var(--color-fg-muted);
+}
+
+// ------------------------------------------------------------
+// Checked
+// ------------------------------------------------------------
+
+.input:checked + .track {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.input:checked + .track .thumb {
+  transform: translateX(calc(var(--switch-width) - var(--switch-thumb) - 6px)) translateY(-50%);
+}
+
+.root:not(.disabled):hover .input:checked + .track {
+  background: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+}
+
+// ------------------------------------------------------------
+// Focus
+// ------------------------------------------------------------
+
+.root .input:focus-visible + .track {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-subtle);
+}
+
+// ------------------------------------------------------------
+// Error
+// ------------------------------------------------------------
+
+.error .track {
+  border-color: var(--color-danger);
+}
+
+.error .input:checked + .track {
+  background: var(--color-danger);
+  border-color: var(--color-danger);
+}
+
+.error:not(.disabled):hover .track {
+  border-color: var(--color-danger);
+}
+
+.error:not(.disabled):hover .input:checked + .track {
+  background: var(--color-danger);
+  border-color: var(--color-danger);
+}
+
+.error .input:focus-visible + .track {
+  border-color: var(--color-danger);
+  box-shadow: 0 0 0 3px var(--color-danger-subtle);
+}
+
+// ------------------------------------------------------------
+// Disabled
+// ------------------------------------------------------------
+
+.disabled {
+  cursor: not-allowed;
+}
+
+.input:disabled {
+  cursor: not-allowed;
+}
+
+.input:disabled + .track {
+  opacity: 0.5;
+}
+
+.disabled .label {
+  color: var(--color-fg-muted);
+}
+
+// ------------------------------------------------------------
+// Размеры
+// ------------------------------------------------------------
+
+.sm {
+  --switch-width: 36px;
+  --switch-height: 20px;
+  --switch-thumb: 14px;
+
+  font-size: var(--text-small);
+}
+
+.md {
+  --switch-width: 44px;
+  --switch-height: 24px;
+  --switch-thumb: 18px;
+
+  font-size: var(--text-base);
+}
+
+.lg {
+  --switch-width: 52px;
+  --switch-height: 28px;
+  --switch-thumb: 22px;
+
+  font-size: var(--text-lead);
+}

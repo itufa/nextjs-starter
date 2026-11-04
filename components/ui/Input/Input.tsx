@@ -26,7 +26,7 @@ type InputProps = {
 	iconLeft?: React.ReactNode
 	iconRight?: React.ReactNode
 	className?: string
-} & React.InputHTMLAttributes<HTMLInputElement>
+} & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>
 
 export function Input({
 	size = 'md',
@@ -43,8 +43,8 @@ export function Input({
 				styles.input,
 				styles[size],
 				error && styles.error,
-				iconLeft && styles.withIconLeft,
-				iconRight && styles.withIconRight,
+				Boolean(iconLeft) && styles.withIconLeft,
+				Boolean(iconRight) && styles.withIconRight,
 				className,
 			)}
 			disabled={disabled}

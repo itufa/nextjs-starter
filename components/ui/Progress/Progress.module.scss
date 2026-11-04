@@ -1,0 +1,78 @@
+// ============================================================
+// components/ui/Progress/Progress.module.scss
+// ============================================================
+
+.progress {
+  width: 100%;
+  overflow: hidden;
+
+  background: var(--color-bg-muted);
+  border-radius: var(--radius-full);
+}
+
+.bar {
+  width: 0;
+  height: 100%;
+
+  background: var(--color-primary);
+  border-radius: var(--radius-full);
+
+  transition: width var(--duration-slow) var(--ease-out);
+}
+
+.sm {
+  height: 4px;
+}
+
+.md {
+  height: 8px;
+}
+
+.lg {
+  height: 12px;
+}
+
+.primary .bar {
+  background: var(--color-primary);
+}
+
+.success .bar {
+  background: var(--color-success);
+}
+
+.warning .bar {
+  background: var(--color-warning);
+}
+
+.danger .bar {
+  background: var(--color-danger);
+}
+
+// ------------------------------------------------------------
+// Бесконечный прогресс
+// ------------------------------------------------------------
+
+.indeterminate .bar {
+  width: 40%;
+
+  animation: indeterminate 1.4s var(--ease-in-out) infinite;
+}
+
+@keyframes indeterminate {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(250%);
+  }
+}
+
+// При отключённых анимациях показываем статичную полосу,
+// а не уезжающую за пределы трека.
+@media (prefers-reduced-motion: reduce) {
+  .indeterminate .bar {
+    animation: none;
+    transform: none;
+  }
+}

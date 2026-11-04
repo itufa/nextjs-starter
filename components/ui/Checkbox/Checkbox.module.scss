@@ -1,0 +1,187 @@
+// ============================================================
+// components/ui/Checkbox/Checkbox.module.scss
+// ============================================================
+
+.root {
+  --checkbox-size: 20px;
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+
+  color: var(--color-fg);
+  font-size: var(--text-base);
+  line-height: var(--leading-base);
+  cursor: pointer;
+  user-select: none;
+}
+
+// ------------------------------------------------------------
+// Нативный input — скрыт, но остаётся в DOM и доступен с клавиатуры
+// ------------------------------------------------------------
+
+.input {
+  position: absolute;
+  top: 0;
+  inset-inline-start: 0;
+  width: var(--checkbox-size);
+  height: var(--checkbox-size);
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.input:focus {
+  outline: none;
+}
+
+// ------------------------------------------------------------
+// Визуальный чекбокс
+// ------------------------------------------------------------
+
+.box {
+  position: relative;
+  flex-shrink: 0;
+  width: var(--checkbox-size);
+  height: var(--checkbox-size);
+
+  background: var(--color-bg);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-xs);
+
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out);
+}
+
+// Галочка: L-образная рамка, повёрнутая на 45°.
+.box::after {
+  content: "";
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 28%;
+  height: 52%;
+
+  border: solid var(--color-fg-inverse);
+  border-width: 0 2px 2px 0;
+
+  opacity: 0;
+  transform: translate(-50%, -50%) rotate(45deg) scale(0);
+  transition:
+    opacity var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+}
+
+.label {
+  font-size: inherit;
+  line-height: inherit;
+}
+
+// ------------------------------------------------------------
+// Hover
+// ------------------------------------------------------------
+
+.root:not(.disabled):hover .box {
+  border-color: var(--color-fg-muted);
+}
+
+// ------------------------------------------------------------
+// Checked
+// ------------------------------------------------------------
+
+.input:checked + .box {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.input:checked + .box::after {
+  opacity: 1;
+  transform: translate(-50%, -50%) rotate(45deg) scale(1);
+}
+
+.root:not(.disabled):hover .input:checked + .box {
+  background: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+}
+
+// ------------------------------------------------------------
+// Focus
+// ------------------------------------------------------------
+
+.root .input:focus-visible + .box {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-subtle);
+}
+
+// ------------------------------------------------------------
+// Error
+// ------------------------------------------------------------
+
+.error .box {
+  border-color: var(--color-danger);
+}
+
+.error .input:checked + .box {
+  background: var(--color-danger);
+  border-color: var(--color-danger);
+}
+
+.error:not(.disabled):hover .box {
+  border-color: var(--color-danger);
+}
+
+.error:not(.disabled):hover .input:checked + .box {
+  background: var(--color-danger);
+  border-color: var(--color-danger);
+}
+
+.error .input:focus-visible + .box {
+  border-color: var(--color-danger);
+  box-shadow: 0 0 0 3px var(--color-danger-subtle);
+}
+
+// ------------------------------------------------------------
+// Disabled
+// ------------------------------------------------------------
+
+.disabled {
+  cursor: not-allowed;
+}
+
+.input:disabled {
+  cursor: not-allowed;
+}
+
+.input:disabled + .box {
+  opacity: 0.5;
+}
+
+.disabled .label {
+  color: var(--color-fg-muted);
+}
+
+// ------------------------------------------------------------
+// Размеры
+// ------------------------------------------------------------
+
+.sm {
+  --checkbox-size: 16px;
+
+  font-size: var(--text-small);
+}
+
+.md {
+  --checkbox-size: 20px;
+
+  font-size: var(--text-base);
+}
+
+.lg {
+  --checkbox-size: 24px;
+
+  font-size: var(--text-lead);
+}

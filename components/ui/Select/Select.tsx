@@ -31,7 +31,7 @@ type SelectProps = {
 	error?: boolean
 	placeholder?: string
 	className?: string
-} & React.SelectHTMLAttributes<HTMLSelectElement>
+} & Omit<React.SelectHTMLAttributes<HTMLSelectElement>, 'size'>
 
 export function Select({
 	children,
